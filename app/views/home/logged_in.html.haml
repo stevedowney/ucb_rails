@@ -1,0 +1,13 @@
+%h1 Logged In
+
+%p
+  Your are logged in as #{session[:uid]}
+  
+%p
+  = link_to("Logout", logout_path)
+
+%hr
+%p= current_ldap_person.inspect
+
+%hr
+  = session.inspect

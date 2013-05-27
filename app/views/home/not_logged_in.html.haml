@@ -1,0 +1,7 @@
+%h1 Not Logged In
+
+%p
+  = link_to("Login with CalNet", login_path)
+  
+- if RailsEnvironment.development?
+  %p= link_to("Login with Developer provider", login_path(provider: 'developer'))
