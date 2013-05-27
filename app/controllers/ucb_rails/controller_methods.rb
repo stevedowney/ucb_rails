@@ -3,7 +3,7 @@ module UcbRails::ControllerMethods
   extend ActiveSupport::Concern
 
     included do
-      helper_method :current_ldap_person
+      helper_method :current_ldap_person, :logged_in?
     end
 
   def logged_in?

@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class UcbRails::HomeController < ApplicationController
   
   def index
     if logged_in?
