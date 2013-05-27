@@ -1,5 +1,8 @@
 # UCB Rails
 
+[![Gem Version](https://badge.fury.io/rb/ucb_rails.png)](http://badge.fury.io/rb/ucb_rails)
+[![Code Climate](https://codeclimate.com/github/stevedowney/ucb_rails.png)](https://codeclimate.com/github/stevedowney/ucb_rails)
+
 Get a jump start on your Rails project at UCB.  Includes:
 
 * CalNet authentication with [omniauth-cas](https://github.com/dlindahl/omniauth-cas)
