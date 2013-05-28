@@ -23,6 +23,15 @@ Gem::Specification.new do |s|
   s.add_dependency "haml"
   s.add_dependency 'rails_environment'
   
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "capybara"
+  s.add_development_dependency "capybara-webkit"
+  s.add_development_dependency "guard-rspec"
+  s.add_development_dependency "guard-spork"
+  s.add_development_dependency 'coveralls'
+  s.add_development_dependency 'shoulda-matchers'  
+  s.add_development_dependency 'database_cleaner'
+  
   s.add_development_dependency "sqlite3"
   
   if ENV['ENGINE_DEVELOPER'] == 'true'
