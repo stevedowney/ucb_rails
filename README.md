@@ -1,6 +1,8 @@
 # UCB Rails
 
 [![Gem Version](https://badge.fury.io/rb/ucb_rails.png)](http://badge.fury.io/rb/ucb_rails)
+[![Build Status](https://travis-ci.org/stevedowney/ucb_rails.png)](https://travis-ci.org/stevedowney/ucb_rails)
+[![Coverage Status](https://coveralls.io/repos/stevedowney/ucb_rails/badge.png?branch=master)](https://coveralls.io/r/stevedowney/ucb_rails?branch=master)
 [![Code Climate](https://codeclimate.com/github/stevedowney/ucb_rails.png)](https://codeclimate.com/github/stevedowney/ucb_rails)
 
 Get a jump start on your Rails project at UCB.  Includes:
