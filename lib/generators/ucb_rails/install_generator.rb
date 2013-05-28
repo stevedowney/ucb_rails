@@ -3,6 +3,7 @@ require 'rails/generators/active_record/migration'
 module UcbRails
   # @private
   module Generators
+    # @private
     class InstallGenerator < Rails::Generators::Base
       include Rails::Generators::Migration
       extend ActiveRecord::Generators::Migration
