@@ -9,34 +9,14 @@ module UcbRails
       extend ActiveRecord::Generators::Migration
       source_root File.join(File.dirname(__FILE__), "templates")
 
-      def self.initializer_path; 'config/initializers/local_vendor/ucb_rails.rb';end
-      
-      desc <<DESC
-Description:
-    # Copies stylesheet    to 'app/assets/stylesheets/user_announcements.css'
-    Copies configuration
-    # Copies db migration  to 'db/migrate/<timestamp>/create_user_announcement_tables.rb'
-    
-DESC
-  
-      def preamble
-        puts "\n============================================================"
-        puts "Installing UCB Rails Essentials\n"
-      end
+      desc 'Copy ucb_rails files'
       
       def install
-        # copy_file "template.css", 'app/assets/stylesheets/user_announcements.css'
-        copy_file "initializer.rb", 'config/initializers/local_vendor/ucb_rails.rb'
-        # migration_template "migration.rb", "db/migrate/create_user_announcement_tables.rb"
+        directory 'app/assets'
+        directory 'app/views'
+        directory 'config'
       end
 
-      def postscript
-        puts %(
-Installation complete:
-  * review settings in the intializer
-)
-        puts "============================================================\n\n"
-      end
     end
   end
 end

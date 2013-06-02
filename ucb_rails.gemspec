@@ -20,8 +20,13 @@ Gem::Specification.new do |s|
   s.add_dependency 'ucb_ldap', '2.0.0.pre1'
   s.add_dependency "omniauth"
   s.add_dependency "omniauth-cas"
-  s.add_dependency "haml"
+  s.add_dependency "haml-rails"
+  s.add_dependency 'bootstrap-sass', '~> 2.3'
+  s.add_dependency 'sass-rails', '~> 3.2'
+
   s.add_dependency 'rails_environment'
+  s.add_dependency 'bootstrap-view-helpers', '~> 0.0.9'
+  s.add_dependency 'user_announcements', '~> 0.0.7'
   
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "capybara"

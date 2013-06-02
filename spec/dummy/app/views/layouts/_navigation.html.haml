@@ -1,0 +1,28 @@
+= brand('AP Bears', url: root_path, with_environment: true)
+%ul.nav
+
+  - if logged_in?
+    %li= link_to('Announcements', hidden_announcements_path)
+    %li= link_to 'CV', cv_path
+    %li= link_to 'Achievements', achievement_owners_path
+    %li= link_to_my_achievements
+    %li= link_to_faculty_proxies
+    
+    - if admin?
+      = nav_dropdown("Admin") do
+        = dropdown_item("Announcements", admin_announcements_path)
+        = dropdown_item("Users", admin_users_path)
+        = dropdown_item("Departments", admin_departments_path)
+      
+      = nav_dropdown("Developer") do
+        = dropdown_item("Bootstrap Examples", bvh_path)
+        = dropdown_divider
+        = dropdown_item("Synch Departments", admin_departments_synch_path)
+        = dropdown_item("Synch Jobs", admin_departments_synch_jobs_path)
+        = dropdown_item("Synch Faculty", admin_departments_synch_faculty_path)
+
+    %li= link_to('Logout', logout_path)
+
+  - unless logged_in?
+    %li
+      = link_to('Login', login_path)

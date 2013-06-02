@@ -1,0 +1,21 @@
+= brand('AP Bears', url: root_path, with_environment: true)
+%ul.nav
+
+  - if logged_in?
+    %li= link_to('Announcements', hidden_announcements_path)
+    
+    - if admin?
+      = nav_dropdown("Admin") do
+        = dropdown_item("Announcements", admin_announcements_path)
+        = dropdown_item("Users", 'admin_users_path')
+      
+      = nav_dropdown("Developer") do
+        = dropdown_item("Bootstrap Examples", bvh_path)
+        = dropdown_divider
+        = dropdown_item("More developer choices")
+
+    %li= link_to('Logout', logout_path)
+
+  - unless logged_in?
+    %li
+      = link_to('Login', login_path)

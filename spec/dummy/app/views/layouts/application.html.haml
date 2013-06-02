@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    %title= content_for?(:title) ? yield(:title) : "AP Bears  "
+    = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => false
+    =# include_gon
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = yield(:head)
+  %body{data: {controller: controller.controller_name, action: controller.action_name}}
+    %header.navbar
+      %nav.navbar-inner
+        .container-fluid.nav-collapse
+          = render 'layouts/navigation'
+    #main{:role => "main"}
+      .container-fluid
+        .content
+          .row-fluid
+            .span12
+              = user_announcements
+              = flash_messages
+              = yield
+          %footer

@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   match '/auth/:provider/callback' => 'ucb_rails/sessions#create'
   match '/auth/failure' => "ucb_rails/sessions#failure"
   
+  resources :hidden_announcements, path: '/announcements', only: [:index, :create, :destroy]
+
+  namespace :admin do
+    resources :announcements
+  end
 end
