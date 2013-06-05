@@ -1,0 +1,13 @@
+<%= simple_form_for(@user, url: url, method: method, :html => {:class => 'form-horizontal'}) do |f| %>
+    <%= f.input :uid, :input_html => {disabled: 'disabled'} %>
+    <%= f.input :first_name, :input_html => {disabled: 'disabled'} %>
+    <%= f.input :last_name, :input_html => {disabled: 'disabled'} %>
+    <%= f.input :email, :input_html => {disabled: 'disabled'} %>
+    <%= f.input :phone, :input_html => {disabled: 'disabled'} %>
+    <%= f.input :admin, :label => false, :as => :boolean, :inline_label => "Admin?" %>
+
+    <div class="form-actions">
+        <%= f.button :submit, :class => 'btn, btn-primary' %>
+        <%= link_to("Cancel", ucb_rails_admin_users_path(), :class => 'btn') %>
+    </div>
+<% end %>

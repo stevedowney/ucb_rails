@@ -6,6 +6,8 @@ require 'omniauth'
 require 'omniauth-cas'
 require 'sass-rails'
 require 'bootstrap-sass'
+require 'active_attr'
+require 'simple_form'
 
 require 'rails_environment'
 require 'ucb_ldap'

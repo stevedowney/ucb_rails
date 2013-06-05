@@ -13,10 +13,24 @@ module UcbRails
       
       def install
         directory 'app/assets'
+        directory 'app/helpers'
         directory 'app/views'
         directory 'config'
+        install_migrations
+        # directory 'db/migrate'
       end
 
+      private
+      
+      def install_migrations
+        template_dir = Pathname.new(self.class.source_root)
+        Dir["#{template_dir}/db/migrate/*.rb"].each do |migration_file|
+          # migration_template migration_file
+          # puts migration_file
+          relative_name = Pathname.new(migration_file).relative_path_from(Pathname.new(template_dir))
+          migration_template relative_name
+        end
+      end
     end
   end
 end

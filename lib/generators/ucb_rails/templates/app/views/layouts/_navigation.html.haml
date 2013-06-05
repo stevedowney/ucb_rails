@@ -1,4 +1,4 @@
-= brand('AP Bears', url: root_path, with_environment: true)
+= brand(app_name, url: root_path, with_environment: true)
 %ul.nav
 
   - if logged_in?
@@ -7,7 +7,7 @@
     - if admin?
       = nav_dropdown("Admin") do
         = dropdown_item("Announcements", admin_announcements_path)
-        = dropdown_item("Users", 'admin_users_path')
+        = dropdown_item("Users", ucb_rails_admin_users_path)
       
       = nav_dropdown("Developer") do
         = dropdown_item("Bootstrap Examples", bvh_path)

@@ -10,7 +10,13 @@ Rails.application.routes.draw do
   
   resources :hidden_announcements, path: '/announcements', only: [:index, :create, :destroy]
 
-  namespace :admin do
-    resources :announcements
+  namespace :ucb_rails do
+    get '/ldap_person_search' => 'ldap_person_search#search', :as => :ldap_person_search
+    
+    namespace :admin do
+      resources :announcements
+      resources :users
+    end
   end
+  
 end

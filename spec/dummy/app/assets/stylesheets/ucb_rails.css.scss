@@ -1,0 +1,13 @@
+a.brand, span.brand {
+  &.rails-development {
+    background-color: gold;
+    color: blue;
+  }
+  
+  &.rails-quality_assurance {
+    background-color: blue;
+    color: gold;
+  }
+  
+}
+

@@ -23,6 +23,8 @@ Gem::Specification.new do |s|
   s.add_dependency "haml-rails"
   s.add_dependency 'bootstrap-sass', '~> 2.3'
   s.add_dependency 'sass-rails', '~> 3.2'
+  s.add_dependency 'active_attr'
+  s.add_dependency 'simple_form', '~> 2.1.0'
 
   s.add_dependency 'rails_environment'
   s.add_dependency 'bootstrap-view-helpers', '~> 0.0.9'

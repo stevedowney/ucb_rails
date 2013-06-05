@@ -1,0 +1,11 @@
+%tr[user]
+  %td= boolean_display(user.admin)
+  %td= user.uid
+  %td= user.first_name
+  %td= user.last_name
+  %td= user.email
+  %td.phone= user.phone
+  %td= datetime_to_s(user.last_request_at, :db)
+  %td= link_to('edit', edit_ucb_rails_admin_user_path(user), :class => 'btn btn-mini', :id => dom_id(user, 'edit')) 
+  %td= link_to('delete', ucb_rails_admin_user_path(user), :data => {confirm: 'Are you sure?'}, :method => :delete, :class => 'btn btn-mini btn-danger')
+  
