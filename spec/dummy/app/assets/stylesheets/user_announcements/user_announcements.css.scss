@@ -1,0 +1,107 @@
+table.ua-table {
+  
+  td.status {
+    width: 1%;
+    text-align: center;
+  }
+  
+  th.active {
+    width: 1%;
+  }
+  
+  td.active {
+    text-align: center;
+  }
+  
+  td.datetime {
+    width: 6em;
+    white-space: nowrap;
+  }
+
+  th.roles {
+    width: 1%;
+  }
+  
+  td.roles {
+    white-space: nowrap;
+  }
+  
+  td {
+    vertical-align: top;
+  }
+  
+  &.non-bootstrap {
+    border-collapse:collapse;
+
+    th, td {
+      border: 1px solid black;
+      padding: 0.5em;
+    }
+  }
+}
+
+.announcement {
+  
+  &.non-bootstrap {
+    background-color: #fcf8e3;
+    color: #c09853;
+    border-bottom: solid 1px black;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    
+    a {
+      font-size: 12px;
+      margin-left: 5px;
+      color: #6E5910;
+    }
+    
+    &.yellow {
+      background-color: #fcf8e3;
+      color: #c09853;
+    }
+    
+    &.red {
+      background-color: #f2dede;
+    /*  border-color: #eed3d7;*/
+      color: #b94a48;
+    }
+    
+    &.green {
+      background-color: #dff0d8;
+    /*  border-color: #d6e9c6;*/
+      color: #468847;
+    }
+    
+    &.blue {
+      background-color: #d9edf7;
+    /*  border-color: #bce8f1;*/
+      color: #3a87ad;
+    }
+    
+  }
+  
+}
+
+form.announcement-detail {
+  
+  p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  
+  label {
+    margin-bottom: 0.4em;
+  }
+ 
+  .ua-datetimepicker {
+    input {
+      width: 8em;
+    }
+  }
+  
+  p.datetime-select select {
+    width: 8em;
+  }
+  
+}

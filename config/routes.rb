@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   match '/logout', :to => 'ucb_rails/sessions#destroy', :as => 'logout'
   match '/auth/:provider/callback' => 'ucb_rails/sessions#create'
   match '/auth/failure' => "ucb_rails/sessions#failure"
+  match '/ucb_rails/bootstrap(/:uid)' => 'ucb_rails/bootstrap#index'
   
   resources :hidden_announcements, path: '/announcements', only: [:index, :create, :destroy]
 

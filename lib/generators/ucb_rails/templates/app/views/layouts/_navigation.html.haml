@@ -9,10 +9,7 @@
         = dropdown_item("Announcements", admin_announcements_path)
         = dropdown_item("Users", ucb_rails_admin_users_path)
       
-      = nav_dropdown("Developer") do
-        = dropdown_item("Bootstrap Examples", bvh_path)
-        = dropdown_divider
-        = dropdown_item("More developer choices")
+      = render partial: 'layouts/developer'
 
     %li= link_to('Logout', logout_path)
 

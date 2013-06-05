@@ -5,15 +5,23 @@ module UcbRails::ControllerMethods
   extend ActiveSupport::Concern
 
   included do
-    helper_method :current_ldap_person, :logged_in?
+    helper_method :admin?, :current_ldap_person, :current_user, :logged_in?
   end
 
+  def admin?
+    current_user.try(:admin?)
+  end  
+
+  def current_user
+    @current_user ||= UcbRails::User.find_by_uid(session[:uid]) if session[:uid].present?
+  end
+  
   # Returns +true+ if there is a logged in user
   #
   # @return [true] if user logged in
   # @return [false] if user not logged in
   def logged_in?
-    session[:uid].present?
+    current_user.present?
   end
   
   # Returns an instance of UCB::LDAP::Person if there is a logged in user
