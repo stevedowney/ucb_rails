@@ -10,16 +10,13 @@
     = csrf_meta_tags
     = yield(:head)
   %body{data: {controller: controller.controller_name, action: controller.action_name}}
-    %header.navbar
-      %nav.navbar-inner
-        .container-fluid.nav-collapse
-          = render 'layouts/navigation'
+    = render 'layouts/navigation'
     #main{:role => "main"}
       .container-fluid
         .content
           .row-fluid
             .span12
               = user_announcements
-              =# flash_messages
+              = flash_messages
               = yield
           %footer

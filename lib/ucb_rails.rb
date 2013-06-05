@@ -8,6 +8,7 @@ require 'sass-rails'
 require 'bootstrap-sass'
 require 'active_attr'
 require 'simple_form'
+require 'jquery-datatables-rails'
 
 require 'rails_environment'
 require 'ucb_ldap'

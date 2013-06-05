@@ -5,6 +5,7 @@ module UcbRails::ControllerMethods
   extend ActiveSupport::Concern
 
   included do
+    before_filter :ensure_authenticated_user
     helper_method :admin?, :current_ldap_person, :current_user, :logged_in?
   end
 
@@ -34,6 +35,10 @@ module UcbRails::ControllerMethods
     end
   end
 
+  def ensure_admin_user
+    admin? or redirect_to not_authorized_path
+  end
+  
   # Before filter that redirects redirects to +login_url+ unless user is logged in
   #
   # @return [nil]

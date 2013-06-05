@@ -1,18 +1,25 @@
-= brand(app_name, url: root_path, with_environment: true)
-%ul.nav
+= nav_bar do
+  
+  = brand(app_name, url: root_path, with_environment: true)
 
-  - if logged_in?
-    %li= link_to('Announcements', hidden_announcements_path)
-    
-    - if admin?
-      = nav_dropdown("Admin") do
-        = dropdown_item("Announcements", admin_announcements_path)
-        = dropdown_item("Users", ucb_rails_admin_users_path)
+  = nav_bar_links do
+    - if logged_in?
+      - if admin?
+        = nav_dropdown("Admin") do
+          = dropdown_item(announcements_text, admin_announcements_path)
+          = dropdown_item(icon('user', "Users"), ucb_rails_admin_users_path)
       
-      = render partial: 'layouts/developer'
+        = render partial: 'layouts/developer'
 
-    %li= link_to('Logout', logout_path)
 
-  - unless logged_in?
-    %li
-      = link_to('Login', login_path)
+    - else
+      %li
+        = link_to('Login', login_path)
+        
+  - if logged_in?
+    = nav_bar_links(pull: 'right') do
+      = nav_dropdown("Logged in as #{current_user.full_name}") do
+        = dropdown_item(announcements_text, hidden_announcements_path)
+        = dropdown_divider
+        = dropdown_item(icon('remove', 'Logout'), logout_path)
+        
