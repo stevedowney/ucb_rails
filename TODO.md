@@ -1,12 +1,7 @@
 # TODO
 
-* add #active column to users
-
 * login authorization
   * CalNet Authenticated
-  * in 'people'
-  * in user table (and active)
-  * custom login authorization
   * via UI, change login rules (i.e., admin only)
   
 * steps in README

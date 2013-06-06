@@ -1,0 +1,13 @@
+****************************************************************************
+* Check configuration settings in config/initializers/local/ucb_rails.rb
+
+* run other generators, migrate db, remove superseded files
+
+rails generate user_announcements:install
+rails generate simple_form:install --bootstrap
+rake db:migrate
+rm public/index.html
+rm app/views/layouts/application.html.erb  
+  
+
+****************************************************************************

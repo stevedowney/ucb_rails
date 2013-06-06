@@ -24,7 +24,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :cas, host: cas_host
 end
 
-
 UcbRails.config do |config|
-  config.app_name = "Set me in config/initializers/ucb_rails.rb"
+  # config.login_authorization_class = "UcbRails::LoginAuthorization::UserTableActive"
+  # config.login_authorization_class = "UcbRails::LoginAuthorization::UserTableAdmin"
+  config.login_authorization_class = "UcbRails::LoginAuthorization::PeopleOu"
 end

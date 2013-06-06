@@ -34,6 +34,10 @@ class UcbRails::SessionsController < ApplicationController
     redirect_to redirect_url(provider)
   end
   
+  def not_authorized
+    render(:text => "Not Authorized", :status => 401)
+  end
+
   # Handler for authentication failure.
   #
   # @return [nil]

@@ -26,11 +26,23 @@ class UcbRails::UserSessionManager
     end
     
     def can_login?(uid)
-      UcbRails::User.active.find_by_uid(uid)
-       # ||
-       #  Faculty.find_by_net_id(uid) ||
-       #  UserRole.find_by_net_id(uid)
+      login_authorization_class.authorized?(uid)
     end
+    
+    private
+    
+    def login_authorization_class
+      klass = UcbRails[:login_authorization_class] || UcbRails::LoginAuthorization::UserTableActive
+      klass.to_s.classify.constantize
+    rescue NameError
+      raise "Could not find UcbRails login_authorization_class: #{klass}"
+    end
+    
+    #   UcbRails::User.active.find_by_uid(uid)
+    #    # ||
+    #    #  Faculty.find_by_net_id(uid) ||
+    #    #  UserRole.find_by_net_id(uid)
+    # end
     
   end
 end

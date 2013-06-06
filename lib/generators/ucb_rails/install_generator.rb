@@ -10,16 +10,24 @@ module UcbRails
       source_root File.join(File.dirname(__FILE__), "templates")
 
       desc 'Copy ucb_rails files'
+      class_option :readme, aliases: '-r', type: :boolean, desc: 'Display README and exit'
       
       def install
+        return if options.readme?
+        
         directory 'app/assets'
         directory 'app/helpers'
         directory 'app/views'
         directory 'config'
         install_migrations
-        # directory 'db/migrate'
       end
 
+      def show_readme
+        if behavior == :invoke
+          readme "README"
+        end
+      end
+      
       private
       
       def install_migrations

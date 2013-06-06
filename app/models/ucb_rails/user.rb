@@ -8,4 +8,8 @@ class UcbRails::User < ActiveRecord::Base
   def self.active
     where(inactive: false)
   end
+  
+  def self.admin
+    where(admin: true)
+  end
 end
