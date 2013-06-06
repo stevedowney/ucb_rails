@@ -19,7 +19,10 @@ Get a jump start on your Rails project at UCB.  Includes:
 Add it to your Gemfile
 
 ```ruby
-gem install 'ucb_rails'
+gem 'ucb_rails'
+
+# bleeding edge
+gem 'ucb_rails', git: 'https://github.com/stevedowney/ucb_rails'
 ```
 
 From the command line, install the `ucb_rails` gem:
