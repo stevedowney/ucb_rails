@@ -9,7 +9,10 @@ module UcbRails::ExtractableHelper
     ( boolean ? '&#10004;' : '&nbsp;' ).html_safe
   end
 
-
+  def th_actions(colspan=1)
+    content_tag(:th, 'Actions', colspan: colspan, class: 'c')
+  end
+  
   def datetime_to_s(datetime, format)
     if datetime.present?
       datetime.localtime.to_s(format)
@@ -18,6 +21,12 @@ module UcbRails::ExtractableHelper
     end
   end
 
+  def form_actions
+    content_tag(:div, class: 'form-actions') do
+      yield
+    end
+  end
+  
   def bs_table(*args)
     options = canonicalize_options(args.extract_options!)
     

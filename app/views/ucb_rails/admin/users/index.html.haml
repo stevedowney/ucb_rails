@@ -6,18 +6,19 @@
   %thead
     %tr
       %th.min Admin?
+      %th.min Inctive?
       %th First Name
       %th Last Name
       %th Email
       %th Phone
-      %th Last Request At
+      %th.dt Last Request At
       %th UID
-      %th Edit
-      %th Delete
+      %th.min Edit
+      %th.min Delete
   %tbody.highlight
     = render partial: 'ucb_rails/admin/users/user', collection: @users
     
-= render :partial => 'ucb_rails/application/ldap_person_search_modal', locals: {xsearch_path: 'add_user_search_path'}
+= render :partial => 'ucb_rails/application/ldap_person_search_modal', locals: {search_path: ucb_rails_add_user_search_path}
 
 :javascript
   $('#ucb_rails_users').dataTable({
@@ -28,11 +29,12 @@
     "aLengthMenu": [[10, 20, 50, -1], [10, 20, 50, 'All']],
     "aaSorting": [[ 5, "desc" ]],
     "aoColumnDefs": [
-          { "aDataSort": [ 0, 1, 2 ], "aTargets": [ 0 ] }, // admin
-          { "aDataSort": [ 1, 2 ], "aTargets": [ 1 ] }, // first name
-          { "aDataSort": [ 2, 1], "aTargets": [ 2 ] },   // last name
-          { "bSortable": false, "aTargets": [ 7 ] },   // edit
-          { "bSortable": false, "aTargets": [ 8 ] },   // delete
+          { "aDataSort": [ 0, 2, 3 ], "aTargets": [ 0 ] }, // admin
+          { "aDataSort": [ 1, 2, 3 ], "aTargets": [ 0 ] }, // active
+          { "aDataSort": [ 1, 2 ], "aTargets": [ 2 ] }, // first name
+          { "aDataSort": [ 2, 1], "aTargets": [ 3 ] },   // last name
+          { "bSortable": false, "aTargets": [ 8 ] },   // edit
+          { "bSortable": false, "aTargets": [ 9 ] },   // delete
         ]
   });
   

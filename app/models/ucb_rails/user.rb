@@ -5,4 +5,7 @@ class UcbRails::User < ActiveRecord::Base
     [first_name, last_name].map(&:presence).compact.join(' ')
   end
   
+  def self.active
+    where(inactive: false)
+  end
 end

@@ -1,0 +1,16 @@
+= simple_form_for(@user, url: url, method: method, :html => {:class => 'form-horizontal'}) do |f|
+  = f.input :uid, :input_html => {disabled: 'disabled'}
+  = f.input :first_name, :input_html => {disabled: 'disabled'}
+  = f.input :last_name, :input_html => {disabled: 'disabled'}
+  = f.input :email, :input_html => {disabled: 'disabled'}
+  = f.input :phone, :input_html => {disabled: 'disabled'}
+  = f.input :last_login_at, as: :string, :input_html => {disabled: 'disabled', value: datetime_to_s(@user.last_login_at, :long)}
+  = f.input :last_request_at, as: :string, :input_html => {disabled: 'disabled', value: datetime_to_s(@user.last_request_at, :long)}
+  = f.input :last_logout_at, as: :string, :input_html => {disabled: 'disabled', value: datetime_to_s(@user.last_logout_at, :long)}
+  = f.input :admin, :label => false, :as => :boolean, :inline_label => "Admin?"
+  = f.input :inactive, :label => false, :as => :boolean, :inline_label => "Inactive User?"
+
+  = form_actions do
+    = submit_button_tag("Update User")
+    = cancel_button_tag(url: ucb_rails_admin_users_path)
+

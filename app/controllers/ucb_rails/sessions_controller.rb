@@ -17,15 +17,18 @@ class UcbRails::SessionsController < ApplicationController
   def create
     session[:uid] = request.env['omniauth.auth'].uid
     session[:provider] = request.env['omniauth.auth'].provider
-    # UserSessionManager.login(session[:uid])
-    redirect_to session[:original_url] || root_path
+    if UcbRails::UserSessionManager.login(session[:uid])
+      redirect_to session[:original_url] || root_path
+    else
+      redirect_to not_authorized_path
+    end
   end
    
   # Log user out 
   #
   # @return [nil]
   def destroy
-    # UserSessionManager.logout(current_user)
+    UcbRails::UserSessionManager.logout(current_user)
     provider = session[:provider]
     reset_session
     redirect_to redirect_url(provider)

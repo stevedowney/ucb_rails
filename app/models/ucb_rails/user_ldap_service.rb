@@ -17,7 +17,7 @@ class UcbRails::UserLdapService
     end
     
     def update_user(uid)
-      ldap_entry = LdapPerson::Finder.find_by_uid!(uid)
+      ldap_entry = UcbRails::LdapPerson::Finder.find_by_uid!(uid)
       user = UcbRails::User.find_by_uid!(uid)
       user.first_name = ldap_entry.first_name
       user.last_name = ldap_entry.last_name

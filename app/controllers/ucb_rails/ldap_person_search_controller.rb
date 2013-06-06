@@ -11,6 +11,12 @@ class UcbRails::LdapPersonSearchController < ApplicationController
     get_entries
   end
     
+  def search_add_user
+    get_entries
+    @ldap_already = UcbRails::User.where(uid: @ldap_entries.map(&:uid)).pluck(:uid)
+    render 'search'
+  end
+    
   private
   
   def get_entries

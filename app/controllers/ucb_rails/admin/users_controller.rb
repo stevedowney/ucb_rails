@@ -16,7 +16,7 @@ class UcbRails::Admin::UsersController < UcbRails::Admin::BaseController
     if user = UcbRails::User.find_by_uid(uid)
       flash[:warning] = "User already exists"
     else
-      user = UserLdapService.create_user(uid)
+      user = UcbRails::UserLdapService.create_user(uid)
       flash[:notice] = 'Record created'#msg_created(user)
     end
     # render :js => %(window.location.href = '#{ucb_rails_admin_user_path}')
