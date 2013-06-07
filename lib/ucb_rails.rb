@@ -1,4 +1,5 @@
 require "ucb_rails/engine"
+require 'ucb_rails/log_tagger'
 
 require 'haml'
 require 'haml-rails'
@@ -16,4 +17,9 @@ require 'bootstrap-view-helpers'
 require 'user_announcements'
   
 module UcbRails
+  
+  def self.logger
+    @logger ||= LogTagger.new('UcbRails', Rails.logger)
+  end
+  
 end

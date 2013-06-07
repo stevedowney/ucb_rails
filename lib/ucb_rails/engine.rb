@@ -1,5 +1,4 @@
 module UcbRails
-  
   # @private
   class Engine < ::Rails::Engine
     config.generators.integration_tool :rspec

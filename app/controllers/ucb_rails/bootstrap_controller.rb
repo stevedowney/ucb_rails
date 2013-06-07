@@ -1,4 +1,5 @@
 class UcbRails::BootstrapController < ApplicationController
+  skip_before_filter :ensure_authenticated_user
   
   def index
     if RailsEnvironment.not_development?

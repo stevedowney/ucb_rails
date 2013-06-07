@@ -1,7 +1,4 @@
 class UcbRails::Admin::BaseController < ApplicationController
-  
-  def index
-    @users = UcbRails::User.all
-  end
+  before_filter :ensure_admin_user
   
 end
