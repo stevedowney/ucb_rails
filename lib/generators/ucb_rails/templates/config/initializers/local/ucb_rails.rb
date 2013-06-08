@@ -25,7 +25,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 
 UcbRails.config do |config|
-  # config.login_authorization_class = "UcbRails::LoginAuthorization::UserTableActive"
-  # config.login_authorization_class = "UcbRails::LoginAuthorization::UserTableAdmin"
-  config.login_authorization_class = "UcbRails::LoginAuthorization::PeopleOu"
+  config.login_authorization_class = "UcbRails::UserSessionManager::UserTableActive"
+  # config.login_authorization_class = "UcbRails::UserSessionManager::UserTableAdmin"
+  # config.login_authorization_class = "UcbRails::UserSessionManager::PeopleOu"
 end

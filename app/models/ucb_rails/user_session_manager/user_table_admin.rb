@@ -1,4 +1,4 @@
-class UcbRails::LoginAuthorization::UserTableAdmin
+class UcbRails::Foo::UserTableAdmin
   class << self
     
     def authorized?(uid)

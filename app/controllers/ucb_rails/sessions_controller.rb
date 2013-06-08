@@ -18,7 +18,7 @@ class UcbRails::SessionsController < ApplicationController
     uid = request.env['omniauth.auth'].uid
     session[:provider] = request.env['omniauth.auth'].provider
     
-    if session_manager.login(uid)
+    if user_session_manager.login(uid)
       session[:uid] = uid
       redirect_to session[:original_url] || root_path
     else
@@ -30,7 +30,7 @@ class UcbRails::SessionsController < ApplicationController
   #
   # @return [nil]
   def destroy
-    session_manager.logout(current_user)
+    user_session_manager.logout(current_user)
     provider = session[:provider]
     reset_session
     redirect_to redirect_url(provider)

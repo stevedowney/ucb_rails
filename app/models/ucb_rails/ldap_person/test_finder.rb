@@ -35,7 +35,7 @@ module UcbRails::LdapPerson
     end
 
     def self.new_entry(uid, calnet_id, fn, ln, email, phone, depts)
-      LdapPerson::Entry.new(
+      ::UcbRails::LdapPerson::Entry.new(
         :uid => uid,
         :calnet_id => calnet_id,
         :first_name => fn,

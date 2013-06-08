@@ -1,0 +1,3 @@
+class UcbRails::UserTableActive
+  
+end

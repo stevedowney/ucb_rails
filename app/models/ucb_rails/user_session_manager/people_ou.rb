@@ -1,4 +1,4 @@
-class UcbRails::LoginAuthorization::PeopleOu
+class UcbRails::Foo::PeopleOu
   class << self
     
     def authorized?(uid)

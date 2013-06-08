@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name, :limit => 60
       t.string :email, :limit => 256
       t.string :phone, :limit => 30
+      t.boolean :inactive, :null => false, :default => false
       t.boolean :admin, :null => false, :default => false
       t.datetime :last_login_at
       t.datetime :last_request_at

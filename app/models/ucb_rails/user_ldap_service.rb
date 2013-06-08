@@ -16,15 +16,14 @@ class UcbRails::UserLdapService
       
     end
     
-    def update_user(uid)
-      ldap_entry = UcbRails::LdapPerson::Finder.find_by_uid!(uid)
-      user = UcbRails::User.find_by_uid!(uid)
+    def update_user_from_ldap_entry(user, ldap_entry)
+      # ldap_entry = UcbRails::LdapPerson::Finder.find_by_uid!(uid)
+      # user = UcbRails::User.find_by_uid!(ldap_entry.uid)
       user.first_name = ldap_entry.first_name
       user.last_name = ldap_entry.last_name
       user.email = ldap_entry.email
       user.phone = ldap_entry.phone
       user.save(validate: false)
-      user
     end
     
     def create_or_update_user(uid)

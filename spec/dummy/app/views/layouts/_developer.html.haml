@@ -1,10 +1,5 @@
 = nav_dropdown("Developer") do
   = dropdown_item("Bootstrap Examples", bvh_path)
-  = dropdown_divider
-  = nav_list_header "Synch"
-  = dropdown_item("Departments", admin_departments_synch_path)
-  = dropdown_item("Jobs", admin_departments_synch_jobs_path)
-  = dropdown_item("Faculty", admin_departments_synch_faculty_path)
 
   - if RailsEnvironment.development?
     = dropdown_divider
