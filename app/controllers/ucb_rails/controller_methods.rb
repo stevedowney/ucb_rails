@@ -42,7 +42,8 @@ module UcbRails::ControllerMethods
   # @return [nil] if user not logged in
   def current_ldap_person
     if logged_in?
-      UCB::LDAP::Person.find_by_uid(session[:uid])
+      # UCB::LDAP::Person.find_by_uid(session[:uid])
+      user_session_manager.current_user(session[:uid])
     end
   end
 

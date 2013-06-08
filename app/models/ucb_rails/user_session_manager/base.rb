@@ -2,25 +2,17 @@ class UcbRails::UserSessionManager::Base
   attr_accessor :uid
   
   def login(uid)
-    false
+    raise NotImplementedError
   end
   
   def current_user(uid)
-    if uid.present?
-      UcbRails::User.find_by_uid(uid)
-    end
+    raise NotImplementedError
   end
   
   def log_request(user)
-    if user.present?
-      user.touch(:last_request_at)
-    end
   end
   
   def logout(user)
-    if user.present?
-      user.touch(:last_logout_at)
-    end
   end
 
   private
