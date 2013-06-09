@@ -25,7 +25,21 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 
 UcbRails.config do |config|
-  config.login_authorization_class = "UcbRails::UserSessionManager::UserTableActive"
-  # config.login_authorization_class = "UcbRails::UserSessionManager::UserTableAdmin"
-  # config.login_authorization_class = "UcbRails::UserSessionManager::PeopleOu"
+  
+  #########################################################
+  # manage login authorization, current user, etc.
+  #########################################################
+
+  # config.user_session_manager = "UcbRails::UserSessionManager::InPeopleOu"
+  # config.user_session_manager = "UcbRails::UserSessionManager::InPeopleOuAddToUsersTable"
+  config.user_session_manager = "UcbRails::UserSessionManager::ActiveInUserTable"
+  # config.user_session_manager = "UcbRails::UserSessionManager::AdminInUserTable"
+  
+  #########################################################
+  # omniauth authentication provider
+  #########################################################
+
+  config.omniauth_provider = :cas        # goes to CalNet
+  # config.omniauth_provider = :developer  # Users test ldap entries
+  
 end

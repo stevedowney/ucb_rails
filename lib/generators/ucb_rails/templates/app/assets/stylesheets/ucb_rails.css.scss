@@ -24,4 +24,9 @@ table {
 
 #ldap-person-search-modal {
   width: 750px;
+  
+  tr.ldap-exists {
+    font-weight: bold;
+  }
+  
 }

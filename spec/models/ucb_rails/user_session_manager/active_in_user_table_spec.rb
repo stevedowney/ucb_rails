@@ -1,16 +1,17 @@
 require 'spec_helper'
 
-describe UcbRails::UserSessionManager::UserTableActive do
-  let(:manager) { UcbRails::UserSessionManager::UserTableActive.new }
+describe UcbRails::UserSessionManager::ActiveInUserTable do
+  let(:manager) { UcbRails::UserSessionManager::ActiveInUserTable.new }
   let(:user) { UcbRails::User.create!({uid: 1}, without_protection: true) }
+  let(:last_user) { UcbRails::User.last! }
   
   describe "login" do
 
     context 'in ldap' do
       it "in User table" do
         user
-        manager.login("1").should == user
-        user.reload.last_login_at.should be_within(1).of(Time.now)
+        manager.login("1").should == last_user
+        last_user.last_login_at.should be_within(1).of(Time.now)
       end
       
       it "inactive in User table" do

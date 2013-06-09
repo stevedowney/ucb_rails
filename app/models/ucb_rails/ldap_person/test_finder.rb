@@ -3,14 +3,14 @@ module UcbRails::LdapPerson
     PersonNotFound = Class.new(StandardError)
 
     def find_by_uid(uid)
-      find_by_attributes(:uid => uid.to_s).first
+      uid.presence and find_by_attributes(:uid => uid.to_s).first
     end
 
     def find_by_uid!(uid)
       find_by_uid(uid) || raise(PersonNotFound, "uid=#{uid.inspect}")
     end
 
-    def find_by_first_last(first_name, last_name)
+    def find_by_first_last(first_name, last_name, options={})
       find_by_attributes(:first_name => first_name, :last_name => last_name)
     end
 

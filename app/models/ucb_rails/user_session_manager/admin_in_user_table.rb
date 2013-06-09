@@ -1,6 +1,6 @@
 module UcbRails
   module UserSessionManager
-    class UserTableAdmin < UserTableActive
+    class AdminInUserTable < ActiveInUserTable
 
       private
       

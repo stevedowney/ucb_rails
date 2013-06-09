@@ -1,13 +1,13 @@
 # Manages starting and ending of sessions, i.e., logging in and out.
 class UcbRails::SessionsController < ApplicationController
   
-  skip_before_filter :ensure_authenticated_user
+  skip_before_filter :ensure_authenticated_user, :log_request
 
   # Redirects to authentication provider
   #
   # @return [nil]
   def new
-    provider = params.fetch(:provider, :cas)
+    provider = UcbRails[:omniauth_provider] || :cas
     redirect_to "/auth/#{provider}"
   end
 
@@ -16,7 +16,7 @@ class UcbRails::SessionsController < ApplicationController
   # @return [nil] 
   def create
     uid = request.env['omniauth.auth'].uid
-    session[:provider] = request.env['omniauth.auth'].provider
+    session[:omniauth_provider] = request.env['omniauth.auth'].provider
     
     if user_session_manager.login(uid)
       session[:uid] = uid
@@ -31,11 +31,14 @@ class UcbRails::SessionsController < ApplicationController
   # @return [nil]
   def destroy
     user_session_manager.logout(current_user)
-    provider = session[:provider]
+    provider = session[:omniauth_provider]
     reset_session
     redirect_to redirect_url(provider)
   end
   
+  # Action called when unauthorized access attempted
+  #
+  # @return [nil]
   def not_authorized
     render(:text => "Not Authorized", :status => 401)
   end

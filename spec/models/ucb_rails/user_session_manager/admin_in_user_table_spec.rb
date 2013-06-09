@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe UcbRails::UserSessionManager::UserTableAdmin do
-  let(:manager) { UcbRails::UserSessionManager::UserTableAdmin.new }
+describe UcbRails::UserSessionManager::AdminInUserTable do
+  let(:manager) { UcbRails::UserSessionManager::AdminInUserTable.new }
   let(:user) { UcbRails::User.create!({uid: 1}, without_protection: true) }
   
   describe "login" do

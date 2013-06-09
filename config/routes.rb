@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   
   match '/login', :to => 'ucb_rails/sessions#new', :as => 'login'
   match '/logout', :to => 'ucb_rails/sessions#destroy', :as => 'logout'
-  match '/auth/:provider/callback' => 'ucb_rails/sessions#create'
+  match '/auth/:omniauth_provider/callback' => 'ucb_rails/sessions#create'
   match '/auth/failure' => "ucb_rails/sessions#failure"
   match '/not_authorized', :to => 'ucb_rails/sessions#not_authorized', as: 'not_authorized'
   

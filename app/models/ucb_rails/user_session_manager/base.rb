@@ -15,6 +15,19 @@ class UcbRails::UserSessionManager::Base
   def logout(user)
   end
 
+  def people_ou_entry(uid_in=nil)
+    self.uid = uid_in if uid_in.present?
+    
+    @people_ou_entry ||= begin
+      if @people_ou_entry = UcbRails::LdapPerson::Finder.find_by_uid(uid)
+        @people_ou_entry
+      else
+        UcbRails.logger.debug "#{self.class} people_ou_entry not found for uid: #{uid.inspect}"
+        nil
+      end
+    end
+  end
+  
   private
   
   def active_user
@@ -25,8 +38,7 @@ class UcbRails::UserSessionManager::Base
     @active_user ||= UcbRails::User.active.admin.find_by_uid(uid)
   end
 
-  def people_ou_entry
-    @people_ou_entry ||= UcbRails::LdapPerson::Finder.find_by_uid(uid)
+  def ldap_person_user_wrapper(ldap_person_entry)
+    UcbRails::UserSessionManager::LdapPersonUserWrapper.new(ldap_person_entry)
   end
-  
 end

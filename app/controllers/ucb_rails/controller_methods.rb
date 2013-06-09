@@ -18,7 +18,10 @@ module UcbRails::ControllerMethods
   end  
 
   def current_user
-    @current_user ||= user_session_manager.current_user(session[:uid])
+    @current_user ||= begin
+      UcbRails.logger.debug 'recalc of current_user'
+      user_session_manager.current_user(session[:uid])
+    end
   end
   
   # Returns +true+ if there is a logged in user
@@ -42,8 +45,10 @@ module UcbRails::ControllerMethods
   # @return [nil] if user not logged in
   def current_ldap_person
     if logged_in?
-      # UCB::LDAP::Person.find_by_uid(session[:uid])
-      user_session_manager.current_user(session[:uid])
+      @current_ldap_person ||= begin
+        UcbRails.logger.debug 'recalc of current_ldap_person'
+        user_session_manager.people_ou_entry(session[:uid])
+      end
     end
   end
 
@@ -63,11 +68,12 @@ module UcbRails::ControllerMethods
 
   def user_session_manager
     @user_session_manager ||= begin
-      klass = UcbRails[:login_authorization_class] || UcbRails::UserSessionManager::UserTableActive
+      UcbRails.logger.debug "creating new user_session_manager"
+      klass = UcbRails[:user_session_manager] || UcbRails::UserSessionManager::ActiveInUserTable
       klass.to_s.classify.constantize.new
     end
-  # rescue NameError
-  #   raise "Could not find UcbRails login_authorization_class: #{klass}"
+  rescue NameError
+    raise "Could not find UcbRails user_session_manager: #{klass}"
   end
   
 end

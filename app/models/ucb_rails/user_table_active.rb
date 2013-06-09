@@ -1,3 +1,3 @@
-class UcbRails::UserTableActive
+class UcbRails::ActiveInUserTable
   
 end

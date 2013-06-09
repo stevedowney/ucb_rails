@@ -64,7 +64,7 @@ module UcbRails::LdapPerson
 
     class << self
       def klass
-        if RailsEnvironment.test?
+        if RailsEnvironment.test? || UcbRails[:omniauth_provider] == :developer
           UcbRails::LdapPerson::TestFinder
         else
           UcbRails::LdapPerson::Finder
