@@ -1,6 +1,8 @@
 class UcbRails::User < ActiveRecord::Base
   self.table_name = 'users'
   
+  attr_accessible :uid, :first_name, :last_name, :inactive
+  
   def full_name
     [first_name, last_name].map(&:presence).compact.join(' ')
   end
