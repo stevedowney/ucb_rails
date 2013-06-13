@@ -2,7 +2,7 @@
 
 %p= link_to_new_user
 
-= bs_table UcbRails::User do
+= ucbr_table_tag UcbRails::User do
   %thead
     %tr
       %th.min Admin?
@@ -18,7 +18,7 @@
   %tbody.highlight
     = render partial: 'ucb_rails/admin/users/user', collection: @users
     
-= render :partial => 'ucb_rails/application/ldap_person_search_modal', locals: {search_path: ucb_rails_add_user_search_path}
+= render :partial => 'ucb_rails/application/ldap_person_search_modal'
 
 :javascript
   $('#ucb_rails_users').dataTable({

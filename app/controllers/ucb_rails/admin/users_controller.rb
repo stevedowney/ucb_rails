@@ -2,6 +2,7 @@ class UcbRails::Admin::UsersController < UcbRails::Admin::BaseController
   before_filter :find_user, :only => [:edit, :update, :destroy]
   
   def index
+    @search_path = ucb_rails_add_user_search_path
     respond_to do |format|
       format.html { @users = UcbRails::User.all }
       # format.json { render json: UsersDatatable.new(view_context) }
@@ -16,7 +17,7 @@ class UcbRails::Admin::UsersController < UcbRails::Admin::BaseController
     if user = UcbRails::User.find_by_uid(uid)
       flash[:warning] = "User already exists"
     else
-      user = UcbRails::UserLdapService.create_user(uid)
+      user = UcbRails::UserLdapService.create_user_from_uid(uid)
       flash[:notice] = 'Record created'#msg_created(user)
     end
     # render :js => %(window.location.href = '#{ucb_rails_admin_user_path}')

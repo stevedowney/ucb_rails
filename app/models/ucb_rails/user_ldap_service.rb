@@ -1,9 +1,12 @@
 class UcbRails::UserLdapService
   
   class << self
+    def create_user_from_uid(uid)
+      ldap_entry = UcbRails::LdapPerson::Finder.find_by_uid!(uid)
+      create_user_from_ldap_entry(ldap_entry)
+    end
     
     def create_user_from_ldap_entry(ldap_entry)
-      # ldap_entry = UcbRails::LdapPerson::Finder.find_by_uid!(uid)
       
       UcbRails::User.create! do |u|
         u.uid = ldap_entry.uid

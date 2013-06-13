@@ -1,0 +1,18 @@
+- path = @search_path || ucb_rails_ldap_person_search_path
+
+= form_tag(path, :class => "well form-inline", :id => 'ldap-person-search-form', :method => :get, :remote => true) do
+
+  = hidden_field_tag('js')
+  = hidden_field_tag('result-link-http-method')
+  = hidden_field_tag('result-link-text')
+  = hidden_field_tag('result-link-class')
+  = hidden_field_tag('result-link-url')
+  
+  = label_tag 'first_name', 'First Name'
+  = text_field_tag("first_name", nil, class: 'input-medium')
+  = label_tag 'last_name', 'Last Name'
+  = text_field_tag("last_name", 'Downey', class: 'input-medium')
+
+  = submit_button_tag('Search')
+  = button("Clear", url: "#", :id => "ldap-person-search-clear-btn")
+  

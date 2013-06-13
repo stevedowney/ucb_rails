@@ -27,7 +27,7 @@ module UcbRails::ExtractableHelper
     end
   end
   
-  def bs_table(*args)
+  def ucbr_table_tag(*args)
     options = canonicalize_options(args.extract_options!)
     
     ar_class = args.first
@@ -36,9 +36,7 @@ module UcbRails::ExtractableHelper
       options = ensure_class(options, ar_class.haml_attributes["class"])
     end
 
-    options = ensure_class(options, %w(table table-bordered table-striped table-hover))
-
-    content_tag(:table, options) do
+    bs_table_tag(options) do
       yield
     end
   end

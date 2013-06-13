@@ -1,0 +1,6 @@
+= modal(id: 'ldap-person-search-modal') do
+  = modal_header('Search For Person')
+  = modal_body do
+    = render partial: 'ucb_rails/ldap_person_search/ldap_person_search_form'
+    #ldap-person-search-results
+  = modal_footer
