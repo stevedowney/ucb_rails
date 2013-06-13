@@ -2,7 +2,6 @@ class UcbRails::Admin::UsersController < UcbRails::Admin::BaseController
   before_filter :find_user, :only => [:edit, :update, :destroy]
   
   def index
-    @search_path = ucb_rails_add_user_search_path
     respond_to do |format|
       format.html { @users = UcbRails::User.all }
       # format.json { render json: UsersDatatable.new(view_context) }
@@ -40,6 +39,17 @@ class UcbRails::Admin::UsersController < UcbRails::Admin::BaseController
     end
 
     redirect_to(ucb_rails_admin_users_path)
+  end
+
+  def ldap_search
+    @lps_entries = UcbRails::LdapPerson::Finder.find_by_first_last(
+      params.fetch(:first_name),
+      params.fetch(:last_name), 
+      :sort => :last_first_downcase
+    )
+    @lps_existing_uids = UcbRails::User.where(uid: @lps_entries.map(&:uid)).pluck(:uid)
+
+    render 'ucb_rails/ldap_person_search/search'
   end
 
   private

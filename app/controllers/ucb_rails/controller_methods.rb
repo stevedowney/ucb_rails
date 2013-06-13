@@ -5,6 +5,10 @@ module UcbRails::ControllerMethods
   extend ActiveSupport::Concern
 
   included do
+    rescue_from UcbRails::LdapPerson::Finder::BlankSearchTermsError do
+      render :js => %(alert("Enter search terms"))
+    end
+
     before_filter :ensure_authenticated_user
     before_filter :log_request
     

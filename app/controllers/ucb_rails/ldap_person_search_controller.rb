@@ -11,18 +11,12 @@ class UcbRails::LdapPersonSearchController < ApplicationController
     get_entries
   end
     
-  def search_add_user
-    get_entries
-    @ldap_already = UcbRails::User.where(uid: @ldap_entries.map(&:uid)).pluck(:uid)
-    render 'search'
-  end
-    
   private
   
   def get_entries
     first_name = params.fetch(:first_name)
     last_name = params.fetch(:last_name)
-    @ldap_entries = UcbRails::LdapPerson::Finder.find_by_first_last(first_name, last_name, :sort => :last_first_downcase)
+    @lps_entries = UcbRails::LdapPerson::Finder.find_by_first_last(first_name, last_name, :sort => :last_first_downcase)
   end
 
 end

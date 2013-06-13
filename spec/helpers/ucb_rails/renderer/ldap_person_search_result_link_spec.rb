@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe 'UcbRails::Renderer::LdapPersonSearchResultLink' do
+  ActionView::Base.send(:include, UcbRails::LdapPersonSearchHelper)
   ActionView::Base.send(:include, UcbRails::ExtractableHelper)
   ActionView::Base.send(:include, Bootstrap::ButtonHelper)
   ActionView::Base.send(:include, Bootstrap::CommonHelper)
@@ -10,8 +11,6 @@ describe 'UcbRails::Renderer::LdapPersonSearchResultLink' do
   let(:template) do
     ActionView::Base.new.tap do |t|
       t.stub(params: {})
-      # t.stub!(:url_for).and_return("URL")
-      # t.stub!(:link_to_new).and_return("LinkToNew")
     end
   end
   
@@ -58,5 +57,11 @@ describe 'UcbRails::Renderer::LdapPersonSearchResultLink' do
     template.stub(params: {"result-link-class" => 'my-class'})
     html = klass.new(template, entry, class: 'my-class').html
     link = Capybara.string(html).find('a.result-link.my-class')
+  end
+  
+  it "exists" do
+    template.instance_variable_set("@lps_existing_uids", ["123"])
+    html = klass.new(template, entry, class: 'my-class').html
+    html.should == 'Exists'
   end
 end

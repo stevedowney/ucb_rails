@@ -15,11 +15,12 @@ Rails.application.routes.draw do
 
   namespace :ucb_rails do
     get '/ldap_person_search' => 'ldap_person_search#search', :as => :ldap_person_search
-    get '/ldap_person_search_add_user' => 'ldap_person_search#search_add_user', :as => :add_user_search
     
     namespace :admin do
       resources :announcements
-      resources :users
+      resources :users do
+        get 'ldap_search', on: :collection
+      end
     end
   end
   

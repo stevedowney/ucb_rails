@@ -1,4 +1,4 @@
-- if @ldap_entries.empty?
+- if @lps_entries.empty?
   %p No records were found.
 - else 
   = ucbr_table_tag(class: 'table-condensed') do
@@ -10,9 +10,9 @@
         %th Email
         %th Department
     %tbody
-      - @ldap_entries.each do |entry|
+      - @lps_entries.each do |entry|
       -   entry_id = "ldap_uid_#{entry.uid}" 
-        %tr{id: entry_id, class: ldap_entry_class(entry.uid)}
+        %tr{id: entry_id, class: ldap_entry_class(entry)}
           %td= link_to_ldap_person_entry(entry) 
           %td= entry.first_name 
           %td= entry.last_name 

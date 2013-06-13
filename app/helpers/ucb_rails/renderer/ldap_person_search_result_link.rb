@@ -10,10 +10,18 @@ module UcbRails
       end
       
       def html
-        button(text, :mini, :primary, link_options)
+        exists? ? exists_html : button(text, :mini, :primary, link_options)
       end
       
       private
+      
+      def exists?
+        ldap_person_search_existing_uids.include?(entry.uid.to_s)
+      end
+      
+      def exists_html
+        params["result-link-exists-text"] || 'Exists'
+      end
       
       def text
         @text ||= params["result-link-text"].presence || "Add"
