@@ -49,7 +49,7 @@ class UcbRails::Admin::UsersController < UcbRails::Admin::BaseController
     )
     @lps_existing_uids = UcbRails::User.where(uid: @lps_entries.map(&:uid)).pluck(:uid)
 
-    render 'ucb_rails/ldap_person_search/search'
+    render 'ucb_rails/lps/search'
   end
 
   private
