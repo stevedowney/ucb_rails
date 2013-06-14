@@ -35,20 +35,7 @@ module UcbRails::LdapPerson
       attributes.each { |k, v| attributes.delete(k) if v.blank?  }
       UCB::LDAP::Person.
         search(:filter => build_filter(attributes)).
-        map { |ldap_entry| new_ldap_person_entry(ldap_entry) }
-    end
-
-    def new_ldap_person_entry(ldap_entry)
-      Entry.new(
-        :uid => ldap_entry.uid,
-        :calnet_id => ldap_entry.berkeleyedukerberosprincipalstring.first,
-        :first_name => ldap_entry.givenname.first,
-        :last_name => ldap_entry.sn.first,
-        :email => ldap_entry.mail.first,
-        :phone => ldap_entry.phone,  
-        :departments => ldap_entry.berkeleyeduunithrdeptname,
-        :affiliations => ldap_entry.berkeleyeduaffiliations
-      )
+        map { |ldap_entry| Entry.new_from_ldap_entry(ldap_entry) }
     end
 
     def build_filter(attrs)
