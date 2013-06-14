@@ -3,9 +3,7 @@ class UcbRails::User < ActiveRecord::Base
   
   attr_accessible :uid, :first_name, :last_name, :inactive
   
-  def full_name
-    [first_name, last_name].map(&:presence).compact.join(' ')
-  end
+  before_validation :set_first_last_name
   
   def admin!
     update_attribute(:admin, true)
@@ -17,5 +15,14 @@ class UcbRails::User < ActiveRecord::Base
   
   def self.admin
     where(admin: true)
+  end
+  
+  private
+  
+  def set_first_last_name
+    self.first_last_name = [first_name, last_name]
+      .select { |n| n.present? }
+      .join(' ')
+      .presence
   end
 end

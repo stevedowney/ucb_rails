@@ -24,4 +24,28 @@ table {
 
 #lps-modal {
   width: 750px;
+  
+  form {
+    input[type="text"] {
+      width: 140px;
+      margin-right: 10px;
+    }
+    
+    #lps-search {
+      margin-left: 20px;
+      margin-right: 10px;
+    }
+  }
+  
+  tr.ldap-result-exists {
+    opacity: 0.5;
+  }
+  
+}
+
+div.control-group.lps-typeahead {
+  i.ldap-person-search {
+    cursor: pointer;
+  }
+
 }

@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe UcbRails::User do
+  let(:klass) { UcbRails::User }
   
-  it '#full_name' do
-    UcbRails::User.new().full_name.should == ''
-    UcbRails::User.new(first_name: 'first').full_name.should == 'first'
-    UcbRails::User.new(last_name: 'last').full_name.should == 'last'
-    UcbRails::User.new(first_name: 'first', last_name: 'last').full_name.should == 'first last'
+  it 'first_last_name' do
+    klass.create!(uid: 1).first_last_name.should be_nil
+    klass.create!(uid: 2, first_name: 'Art').first_last_name.should == 'Art'
+    klass.create!(uid: 3, last_name: 'Andrews').first_last_name.should == 'Andrews'
+    klass.create!(uid: 4, first_name: 'Art', last_name: 'Andrews').first_last_name.should == 'Art Andrews'
   end
   
   it '#admin!' do

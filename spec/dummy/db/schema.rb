@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130607210632) do
+ActiveRecord::Schema.define(:version => 20130614154240) do
 
   create_table "announcements", :force => true do |t|
     t.text     "message"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130607210632) do
     t.string   "uid",             :limit => 10,                     :null => false
     t.string   "first_name",      :limit => 60
     t.string   "last_name",       :limit => 60
+    t.string   "first_last_name", :limit => 100
     t.string   "email",           :limit => 256
     t.string   "phone",           :limit => 30
     t.boolean  "inactive",                       :default => false, :null => false

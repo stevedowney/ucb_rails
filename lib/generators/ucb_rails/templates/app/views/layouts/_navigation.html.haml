@@ -18,7 +18,7 @@
         
   - if logged_in?
     = nav_bar_links(pull: 'right') do
-      = nav_dropdown("Logged in as #{current_user.full_name}") do
+      = nav_dropdown("Logged in as #{current_user.first_last_name}") do
         = dropdown_item(announcements_text, hidden_announcements_path)
         = dropdown_divider
         = dropdown_item(icon('remove', 'Logout'), logout_path)

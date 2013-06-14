@@ -37,6 +37,7 @@ module UcbRails
             uid: entry.uid,
             first_name: entry.first_name,
             last_name: entry.last_name,
+            email: entry.email,
           }
         }
       end

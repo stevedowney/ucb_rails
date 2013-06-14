@@ -52,6 +52,15 @@ class UcbRails::Admin::UsersController < UcbRails::Admin::BaseController
     render 'ucb_rails/lps/search'
   end
 
+  def typeahead_search
+    tokens = params.fetch(:query).to_s.strip.split(/\s+/)
+    wheres = tokens.map { |e| 'first_last_name like ?' }.join(' and ')
+    values = tokens.map { |e| "%#{e}%" }
+    where = ["#{wheres}", *values]
+    results = UcbRails::User.where(*where).limit(10)
+    render json: results.map { |r| {uid: r.uid, first_last_name: r.first_last_name} }
+  end
+  
   private
 
   def find_user

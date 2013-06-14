@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :announcements
       resources :users do
         get 'ldap_search', on: :collection
+        get 'typeahead_search', on: :collection
       end
     end
   end
