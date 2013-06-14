@@ -18,7 +18,7 @@
   %tbody.highlight
     = render partial: 'ucb_rails/admin/users/user', collection: @users
     
-= render :partial => 'ucb_rails/application/ldap_person_search_modal'
+= render :partial => 'ucb_rails/ldap_person_search/modal'
 
 :javascript
   $('#ucb_rails_users').dataTable({

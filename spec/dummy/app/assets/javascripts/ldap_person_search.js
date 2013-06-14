@@ -4,7 +4,7 @@ $(function() {
   function clearLdapPersonSearchForm() {
     $('#first_name').val('');
     $('#last_name').val('');
-    $("#ldap-person-search-results").empty();
+    $("#lps-results").empty();
   }
   
   function addHiddenField(link, dataAttribute) {
@@ -25,24 +25,24 @@ $(function() {
 
   // open search dialog
   $('.ldap-person-search').click(function() {
-    $('#ldap-person-search-modal').modal('show');
+    $('#lps-modal').modal('show');
     $('#first_name').focus();
     addHiddenFields($(this));
   });
     
   // Clear button
-  $('#ldap-person-search-clear-btn').click(function() {
+  $('#lps-clear').click(function() {
     clearLdapPersonSearchForm();
   }); 
 
   // modal shown
-  $("#ldap-person-search-modal").on('show', function() {
+  $("#lps-modal").on('show', function() {
     clearLdapPersonSearchForm();
     $("#first_name").focus();
   });
   
   // modal hidden
-  $("#ldap-person-search-modal").on('hide', function() {
+  $("#lps-modal").on('hide', function() {
     clearLdapPersonSearchForm();
   });
 });

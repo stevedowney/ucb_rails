@@ -22,11 +22,23 @@ table {
   
 }
 
-#ldap-person-search-modal {
+#lps-modal {
   width: 750px;
   
-  tr.ldap-exists {
-    font-weight: bold;
+  form {
+    input[type="text"] {
+      width: 150px;
+      margin-right: 10px;
+    }
+    
+    #lps-search {
+      margin-left: 20px;
+      margin-right: 10px;
+    }
+  }
+  
+  tr.ldap-result-exists {
+    opacity: 0.5;
   }
   
 }
