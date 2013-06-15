@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ucb_rails (0.0.2)
+    ucb_rails (0.0.3)
       active_attr
       bootstrap-sass (~> 2.3)
       bootstrap-view-helpers (~> 0.0.13)
