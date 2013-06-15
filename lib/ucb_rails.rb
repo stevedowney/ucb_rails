@@ -14,6 +14,7 @@ require 'jquery-datatables-rails'
 require 'rails_environment'
 require 'ucb_ldap'
 require 'bootstrap-view-helpers'
+require 'rails_view_helpers'
 require 'user_announcements'
   
 module UcbRails

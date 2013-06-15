@@ -4,7 +4,7 @@ PATH
     ucb_rails (0.0.1)
       active_attr
       bootstrap-sass (~> 2.3)
-      bootstrap-view-helpers (~> 0.0.12)
+      bootstrap-view-helpers (~> 0.0.13)
       haml-rails
       jquery-datatables-rails (~> 1.11.2)
       jquery-rails
@@ -12,7 +12,7 @@ PATH
       omniauth-cas
       rails (~> 3.1)
       rails_environment
-      rails_view_helpers
+      rails_view_helpers (~> 0.0.2)
       sass-rails (~> 3.2)
       simple_form (~> 2.1.0)
       ucb_ldap (= 2.0.0.pre1)
@@ -60,7 +60,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
-    bootstrap-view-helpers (0.0.12)
+    bootstrap-view-helpers (0.0.13)
       jquery-rails
       rails
     builder (3.0.4)
@@ -166,7 +166,7 @@ GEM
       bundler (~> 1.0)
       railties (= 3.2.13)
     rails_environment (0.0.2)
-    rails_view_helpers (0.0.1)
+    rails_view_helpers (0.0.2)
       jquery-rails
       rails (~> 3.2.13)
     railties (3.2.13)
