@@ -1,6 +1,6 @@
 %tr[user]
-  %td.c= boolean_display(user.admin)
-  %td.c= boolean_display(user.inactive)
+  = td_bln(user.admin)
+  = td_bln(user.inactive)
   %td= user.first_name
   %td= user.last_name
   %td= mail_to(user.email)
