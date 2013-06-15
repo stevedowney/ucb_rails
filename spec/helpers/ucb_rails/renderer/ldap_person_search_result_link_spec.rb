@@ -16,7 +16,7 @@ describe 'UcbRails::Renderer::LdapPersonSearchResultLink' do
   
   it "defaults" do
     html = klass.new(template, entry).html
-    link = Capybara.string(html).find('a.result-link')
+    link = Capybara.string(html).find('a.result-link.result-link-default')
     
     link.text.should == 'Add'
     link['href'].should == '#'
@@ -42,6 +42,7 @@ describe 'UcbRails::Renderer::LdapPersonSearchResultLink' do
     link = Capybara.string(html).find('a.result-link')
     
     link['href'].should == "/url?foo=bar&first_name=Art&last_name=Andrews&uid=123"
+    link['class'].should_not match /result-link-default/
     link['data-remote'].should == 'true'
     link['data-method'].should == 'post'
   end
@@ -58,6 +59,7 @@ describe 'UcbRails::Renderer::LdapPersonSearchResultLink' do
     template.stub(params: {"result-link-class" => 'my-class'})
     html = klass.new(template, entry, class: 'my-class').html
     link = Capybara.string(html).find('a.result-link.my-class')
+    link['class'].should_not match /result-link-default/
   end
   
   it "exists" do

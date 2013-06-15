@@ -2,7 +2,7 @@
 
 %p= link_to_new_user
 
-= ucbr_table_tag UcbRails::User do
+= ucbr_table_tag UcbRails::User, data: {url: ucb_rails_admin_users_path(format: "json")} do
   %thead
     %tr
       %th.min Admin?
@@ -16,25 +16,7 @@
       %th.min Edit
       %th.min Delete
   %tbody.highlight
-    = render partial: 'ucb_rails/admin/users/user', collection: @users
+    =# render partial: 'ucb_rails/admin/users/user', collection: @users
     
 = render :partial => 'ucb_rails/lps/modal'
-
-:javascript
-  $('#ucb_rails_users').dataTable({
-    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-    "sPaginationType": "bootstrap",
-    "bStateSave": true,
-    "iDisplayLength": 20,
-    "aLengthMenu": [[10, 20, 50, -1], [10, 20, 50, 'All']],
-    "aaSorting": [[ 5, "desc" ]],
-    "aoColumnDefs": [
-          { "aDataSort": [ 0, 2, 3 ], "aTargets": [ 0 ] }, // admin
-          { "aDataSort": [ 1, 2, 3 ], "aTargets": [ 0 ] }, // active
-          { "aDataSort": [ 1, 2 ], "aTargets": [ 2 ] }, // first name
-          { "aDataSort": [ 2, 1], "aTargets": [ 3 ] },   // last name
-          { "bSortable": false, "aTargets": [ 8 ] },   // edit
-          { "bSortable": false, "aTargets": [ 9 ] },   // delete
-        ]
-  });
   

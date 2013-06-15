@@ -1,10 +1,11 @@
 class UcbRails::Admin::UsersController < UcbRails::Admin::BaseController
   before_filter :find_user, :only => [:edit, :update, :destroy]
+  respond_to :html, :js
   
   def index
     respond_to do |format|
       format.html { @users = UcbRails::User.all }
-      # format.json { render json: UsersDatatable.new(view_context) }
+      format.json { render json: UcbRails::UsersDatatable.new(view_context) }
     end
   end
   

@@ -43,8 +43,14 @@ module UcbRails
       end
       
       def classes
-        extra_class = params['result-link-class'].presence || 'result-link-default'
-        "result-link #{extra_class}"
+        ['result-link', params['result-link-class'].presence, default_class].select(&:presence)
+      end
+      
+      # default class if no url, no result-link-class
+      def default_class
+        return nil if url_param.present?
+        return nil if params['result-link-class'].present?
+        'result-link-default'
       end
       
       def item_url
