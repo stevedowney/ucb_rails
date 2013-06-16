@@ -24,6 +24,8 @@ guard 'rspec', cli: "--color --drb" do
 
 
   # Rails example
+  watch(%r{lps_typeahead_search_field}) { "spec/helpers/ucb_rails/lps_typeahead_helper_spec.rb"}
+  
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
   
   watch(%r{^spec/dummy/app/(.+).rb$})                          { |m| "spec/#{m[1]}_spec.rb" }
