@@ -26,12 +26,16 @@ module UcbRails
       private
       
       def label_html
-        label_tag(name, class: label_classes(required)) do
-          required_marker(required) +
+        required_marker = required ? content_tag(:abbr, '*', title: 'required') + ' ' : ''
+        label_classes = 'control-label'
+        label_classes << ' required' if required
+        
+        label_tag(name, class: label_classes) do
+          required_marker +
           label
         end
       end
-      
+            
       def text_field_html
         text_field_tag(name, value, {
           autocomplete: 'off',
