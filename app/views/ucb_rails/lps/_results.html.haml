@@ -1,21 +1,34 @@
-- if @lps_entries.empty?
-  %p No records were found.
-- else 
-  = ucbr_table_tag(class: 'table-condensed') do
-    %thead
-      %tr
-        %th{style: 'width="1%"'}
-        %th First Name
-        %th Last Name
-        %th Email
-        %th Department
-    %tbody
-      - @lps_entries.each do |entry|
-      -   entry_id = "ldap_uid_#{entry.uid}" 
-        %tr{id: entry_id, class: ldap_entry_class(entry)}
-          %td= link_to_ldap_person_entry(entry) 
-          %td= entry.first_name 
-          %td= entry.last_name 
-          %td= entry.email 
-          %td= entry.departments 
+= ucbr_table_tag(class: 'table-condensed') do
+  %thead
+    %tr
+      %th{style: 'width="1%"'}
+      %th First Name
+      %th Last Name
+      %th Email
+      %th Department
+  %tbody
+    - @lps_entries.each do |entry|
+    -   entry_id = "ldap_uid_#{entry.uid}" 
+      %tr{id: entry_id, class: ldap_entry_class(entry)}
+        %td= link_to_ldap_person_entry(entry) 
+        %td= entry.first_name 
+        %td= entry.last_name 
+        %td= entry.email 
+        %td= entry.departments 
 
+:javascript
+  $('#lps-modal table').dataTable({
+    "bPaginate": false,
+    "bFilter": false,
+    "bInfo": false,
+    "oLanguage": {
+      "sEmptyTable": "No matches for your search."
+    },
+    "aaSorting": [ [1, "asc"], [2, "asc"] ],
+    "aoColumnDefs": [
+      { "bSortable": false, "aTargets": [ 0 ] },   // selection link
+      { "aDataSort": [ 1, 2 ], "aTargets": [ 1 ] }, // first name
+      { "aDataSort": [ 2, 1 ], "aTargets": [ 2 ] }, // last name
+      { "aDataSort": [ 3, 1, 2 ], "aTargets": [ 3 ] }, // department
+    ]
+  });

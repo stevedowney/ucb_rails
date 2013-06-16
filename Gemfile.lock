@@ -12,8 +12,8 @@ PATH
       omniauth
       omniauth-cas
       rails (~> 3.1)
-      rails_environment
-      rails_view_helpers (~> 0.0.2)
+      rails_environment (~> 0.0.2)
+      rails_view_helpers (~> 0.0.3)
       sass-rails (~> 3.2)
       simple_form (~> 2.1.0)
       ucb_ldap (= 2.0.0.pre1)
@@ -170,7 +170,7 @@ GEM
       bundler (~> 1.0)
       railties (= 3.2.13)
     rails_environment (0.0.2)
-    rails_view_helpers (0.0.2)
+    rails_view_helpers (0.0.3)
       jquery-rails
       rails (~> 3.2.13)
     railties (3.2.13)

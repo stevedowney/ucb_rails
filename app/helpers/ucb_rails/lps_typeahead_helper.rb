@@ -36,13 +36,12 @@ module UcbRails::LpsTypeaheadHelper
       label_tag(name, class: label_classes(required)) do
         required_marker(required) +
         label
-         
       end +
       content_tag(:div, class: 'controls') do
         content_tag(:div, class: 'input-append') do
           text_field_tag(name, value, placeholder: placeholder, class: 'typeahead-lps-search', data: { uid_dom_id: uid_dom_id, url: search_url }) +
-          content_tag(:span, class: 'add-on') do
-            icon('search', class: 'ldap-person-search', data: {search_field_name: name, result_link_text: result_link_text, result_link_class: result_link_class})
+          content_tag(:span, class: 'add-on ldap-person-search', data: {search_field_name: name, result_link_text: result_link_text, result_link_class: result_link_class}) do
+            icon('search')
           end
         end +
         content_tag(:p, hint, class: 'help-block')

@@ -18,4 +18,7 @@ module UcbRails::LdapPersonSearchHelper
     @ldap_person_search_existing_uids ||= (@lps_existing_uids || []).map(&:to_s)
   end
   
+  def lps_matches
+    @lps_entries.size.zero? ? '' : "Matches: #{@lps_entries.size}"
+  end
 end
