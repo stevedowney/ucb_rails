@@ -5,8 +5,16 @@ class UcbRails::User < ActiveRecord::Base
   
   before_validation :set_first_last_name
   
-  def admin!
-    update_attribute(:admin, true)
+  def active?
+    !inactive?
+  end
+  
+  def admin!(_admin=true)
+    update_attribute(:admin, _admin)
+  end
+  
+  def inactive!(_inactive=true)
+    update_attribute(:inactive, _inactive)
   end
   
   def self.active

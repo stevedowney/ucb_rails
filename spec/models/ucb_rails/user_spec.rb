@@ -12,8 +12,30 @@ describe UcbRails::User do
   
   it '#admin!' do
     user = UcbRails::User.create!(uid: 1)
+    user.should_not be_admin
+    
     user.admin!
     user.should be_admin
+
+    user.admin!(false)
+    user.should_not be_admin
+  end
+  
+  it "active?" do
+    user = UcbRails::User.create!(uid: 1)
+    user.should_not be_inactive
+    user.should be_active
+  end
+  
+  it '#inactive!' do
+    user = UcbRails::User.create!(uid: 1)
+    user.should_not be_inactive
+    
+    user.inactive!
+    user.should be_inactive
+    
+    user.inactive!(false)
+    user.should_not be_inactive
   end
   
   it '.active' do

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ucb_rails (0.0.3)
+    ucb_rails (0.0.4)
       active_attr
       bootstrap-sass (~> 2.3)
       bootstrap-view-helpers (~> 0.0.13)
@@ -9,8 +9,8 @@ PATH
       jquery-datatables-rails (~> 1.11.2)
       jquery-rails
       kaminari
-      omniauth
-      omniauth-cas
+      omniauth (= 1.1.1)
+      omniauth-cas (= 1.0.0)
       rails (~> 3.1)
       rails_environment (~> 0.0.2)
       rails_view_helpers (~> 0.0.3)
@@ -35,7 +35,7 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active_attr (0.8.1)
+    active_attr (0.8.2)
       activemodel (>= 3.0.2, < 4.1)
       activesupport (>= 3.0.2, < 4.1)
     activemodel (3.2.13)
@@ -112,7 +112,7 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
-    hashie (2.0.5)
+    hashie (1.2.0)
     hike (1.2.2)
     i18n (0.6.1)
     journey (1.0.4)
@@ -140,10 +140,10 @@ GEM
     multi_json (1.7.4)
     net-ldap (0.2.2)
     nokogiri (1.5.9)
-    omniauth (1.1.4)
-      hashie (>= 1.2, < 3)
+    omniauth (1.1.1)
+      hashie (~> 1.2)
       rack
-    omniauth-cas (1.0.2)
+    omniauth-cas (1.0.0)
       addressable (~> 2.3)
       nokogiri (~> 1.5)
       omniauth (~> 1.1.0)
