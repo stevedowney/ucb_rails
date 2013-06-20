@@ -1,5 +1,17 @@
 # TODO
 
+* default user#has_role?
+  * overridable module to include?
+  
+* exception notification
+  * include gem
+  * include configuration (where)
+  * force error controller
+
+* email 
+  * configuration
+  * test send of email
+
 * login authorization
   * CalNet Authenticated
   * via UI, change login rules (i.e., admin only)
@@ -8,11 +20,6 @@
   * warnings about files
   * run other installers (list)
   * rake db:migrate
-  
-* exception notification
-  * include gem
-  * include configuration (where)
-  * force error controller
   
 * post generator install message
   * group :development do

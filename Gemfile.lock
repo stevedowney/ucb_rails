@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ucb_rails (0.0.4)
+    ucb_rails (0.0.5)
       active_attr
       bootstrap-sass (~> 2.3)
       bootstrap-view-helpers (~> 0.0.13)
@@ -12,7 +12,7 @@ PATH
       omniauth (= 1.1.1)
       omniauth-cas (= 1.0.0)
       rails (~> 3.1)
-      rails_environment (~> 0.0.2)
+      rails_environment (~> 0.0.3)
       rails_view_helpers (~> 0.0.3)
       sass-rails (~> 3.2)
       simple_form (~> 2.1.0)
@@ -169,7 +169,7 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
-    rails_environment (0.0.2)
+    rails_environment (0.0.3)
     rails_view_helpers (0.0.3)
       jquery-rails
       rails (~> 3.2.13)
