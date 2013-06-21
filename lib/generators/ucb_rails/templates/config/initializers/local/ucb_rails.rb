@@ -1,18 +1,33 @@
 ############################################################
-# Load credentials from config/credentials.yml
+# Load configuration from config/config.yml
 ############################################################
 
-credentials_file = Rails.root.join('config/credentials.yml')
-credentials = File.exists?(credentials_file) ? YAML.load_file(credentials_file) : {}
+config = UcbRails::Configuration::Configuration.new
+
+############################################################
+# ActionMailer
+############################################################
+
+UcbRails::Configuration::Email.configure(config.for('email'))
+
+############################################################
+# Exception Notification
+############################################################
+
+UcbRails::Configuration::ExceptionNotification.configure(config.for('exception_notification'))
 
 ############################################################
 # UCB::LDAP
 ############################################################
 
 UCB::LDAP.host = 'nds.berkeley.edu'
-ldap_credentials = credentials["ldap"] || credentials[Rails.env].try(:[], "ldap")
-UCB::LDAP.authenticate(ldap_credentials['username'], ldap_credentials['password']) if ldap_credentials
-
+if ldap_credentials = config.for('ldap')
+  puts "[UcbRails] Using ldap credentials from #{config.config_filename}"
+  UCB::LDAP.authenticate(ldap_credentials['username'], ldap_credentials['password'])
+else
+  puts "[UcbRails] No ldap credentials found.  Using anonymous bind."
+end
+  
 ############################################################
 # OmniAuth
 ############################################################

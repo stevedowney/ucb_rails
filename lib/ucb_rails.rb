@@ -11,6 +11,7 @@ require 'bootstrap-sass'
 require 'active_attr'
 require 'simple_form'
 require 'jquery-datatables-rails'
+require 'exception_notification'
 
 require 'rails_environment'
 require 'ucb_ldap'

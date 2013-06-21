@@ -1,5 +1,6 @@
 = nav_dropdown("Developer") do
   = dropdown_item("Bootstrap Examples", bvh_path)
+  = dropdown_item(icon('exclamation-sign', "Force Exception"), ucb_rails_admin_force_exception_path)
 
   - if RailsEnvironment.development?
     = dropdown_divider

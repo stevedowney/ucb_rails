@@ -5,6 +5,7 @@ PATH
       active_attr
       bootstrap-sass (~> 2.3)
       bootstrap-view-helpers (~> 0.0.13)
+      exception_notification (~> 4.0.0.rc1)
       haml-rails
       jquery-datatables-rails (~> 1.11.2)
       jquery-rails
@@ -90,6 +91,9 @@ GEM
     diff-lcs (1.2.4)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    exception_notification (4.0.0.rc1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     ffi (1.8.1)
     formatador (0.2.4)
     guard (1.8.0)
