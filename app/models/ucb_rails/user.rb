@@ -11,7 +11,7 @@ class UcbRails::User < ActiveRecord::Base
   end
   
   def has_role?(role)
-    roles.include?(role)
+    admin? || roles.include?(role)
   end
   
   def active?

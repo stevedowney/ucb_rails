@@ -2,17 +2,26 @@ require 'spec_helper'
 
 describe UcbRails::User do
   let(:klass) { UcbRails::User }
+  let(:user) { klass.new}
   
   it "#roles defaults to []" do
     klass.new.roles.should == []
   end
   
-  it "#has_role?" do
-    user = klass.new
-    user.should_not have_role('foo')
+  describe '#has_role?' do
+    it "false" do
+      user.should_not have_role('foo')
+    end
     
-    user.stub :roles => ['foo']
-    user.should have_role('foo')
+    it "true" do
+      user.stub :roles => ['foo']
+      user.should have_role('foo')
+    end
+    
+    it "admin true" do
+      user.admin = true
+      user.should have_role('foo')
+    end
   end
   
   it 'first_last_name' do
