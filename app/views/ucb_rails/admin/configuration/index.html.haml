@@ -1,0 +1,47 @@
+%h1 Configuration
+
+%h2 config/config.yml
+
+- config = UcbRails::Configuration::Configuration.new
+%pre
+  = preserve do
+    = config.config_yaml.to_yaml
+  
+%h2 LDAP
+
+%pre
+  = preserve do
+    = ["host:     #{UCB::LDAP.host}", "username: #{UCB::LDAP.username}", "password: #{UCB::LDAP.password}"].join("\n")
+    
+%h2 Email
+
+%table{border: 1, cellpadding: '4px', cellspacing: 0}
+  %tr
+    %th Key
+    %th Value
+  %tr
+    %td default
+    %td= ActionMailer::Base.default.inspect
+  %tr
+    %td default_url_options
+    %td= ActionMailer::Base.default_url_options.inspect
+  %tr
+    %td delivery method
+    %td= ActionMailer::Base.delivery_method.inspect
+  %tr
+    %td raise delivery errors
+    %td= ActionMailer::Base.raise_delivery_errors.inspect
+  %tr
+    %td sendmail_settings
+    %td= ActionMailer::Base.sendmail_settings.inspect
+  %tr
+    %td smtp_settings
+    %td= ActionMailer::Base.smtp_settings.inspect
+  %tr
+    %td subject prefix
+    %td= UcbRails[:email_subject_prefix]
+    
+%h2 Exception Notifier
+
+%pre
+  = config.for('exception_notifier')

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     
     namespace :admin do
       resources :announcements
+      get 'configuration' => 'configuration#index'
       get 'force_exception' => 'force_exception#index'
       resources :users do
         get 'ldap_search', on: :collection
