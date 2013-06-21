@@ -1,43 +1,56 @@
 # You can have configuration per-environment by nesting under the
 # environment key, or have a top level.
 
-# exception_notification:
-#   email:
-#     email_prefix: '[My App - Error {env}] '
-#     sender_address: user@example.com
-#     exception_recipients:
-#       - user1@example.com
-#       - user2@example.com
 
-email:
-  default:
-    from: user@gmail.com
-  default_url_options:
-    host: example.com
-  delivery_method: :smtp
-  # delivery_method: :sendmail
-  # delivery_method: :test
-  # delivery_method: :file
-  raise_delivery_errors: true
-  # send_mail_settings:
-  #   location: "/usr/sbin/sendmail"
-  #   arguments: "-i -t"
-  smtp_settings:
-    address: smtp.gmail.com
-    port: 587
-    domain: gmail.com
-    user_name: <username>
-    password: <password>
-    authentication: plain
-    enable_starttls_auto: true
-  subject_prefix: '[My App {env}] '
     
 # ldap:
 #   username: <username>
 #   password: <password>
 
 development:
+
+  # email:
+  #   default:
+  #     from: user@gmail.com
+  #   default_url_options:
+  #     host: example.com
+  #   delivery_method: :smtp
+  #   # delivery_method: :sendmail
+  #   # delivery_method: :test
+  #   # delivery_method: :file
+  #   raise_delivery_errors: true
+  #   # send_mail_settings:
+  #   #   location: "/usr/sbin/sendmail"
+  #   #   arguments: "-i -t"
+  #   smtp_settings:
+  #     address: smtp.gmail.com
+  #     port: 587
+  #     domain: gmail.com
+  #     user_name: <username>
+  #     password: <password>
+  #     authentication: plain
+  #     enable_starttls_auto: true
+  #   subject_prefix: '[My App {env}] '
+
+  # exception_notification:
+  #   email:
+  #     email_prefix: '[My App - Error {env}] '
+  #     sender_address: user@example.com
+  #     exception_recipients:
+  #       - user1@example.com
+  #       - user2@example.com
+
   # ldap:
   #   username: <username>
   #   password: <password>
+
+test:
+  email:
+    default:
+      from: test-user@examle.com
+    default_url_options:
+      host: example.com
+    delivery_method: :test
+    raise_delivery_errors: true
+    subject_prefix: '[My App {env}] '
 

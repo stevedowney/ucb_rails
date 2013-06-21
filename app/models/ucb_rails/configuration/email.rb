@@ -10,8 +10,9 @@ module UcbRails
       end
       
       def initialize(configuration_hash)
-        raise(ArgumentError, "expected a Hash, got: #{configuration_hash.inspect}") unless 
-        configuration_hash.is_a?(Hash)
+        return if configuration_hash.nil?
+        raise(ArgumentError, "expected a Hash, got: #{configuration_hash.inspect}") unless configuration_hash.is_a?(Hash)
+        
         self.hash = configuration_hash
         process_configuration
       end
