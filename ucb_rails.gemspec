@@ -28,6 +28,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_form', '~> 2.1.0'
   s.add_dependency "jquery-datatables-rails", "~> 1.11.2"
   s.add_dependency 'kaminari'
+  s.add_dependency 'bootstrap-datepicker-rails'
+  
   
 
   s.add_dependency 'rails_environment', '~> 0.0.3'

@@ -12,6 +12,7 @@ require 'active_attr'
 require 'simple_form'
 require 'jquery-datatables-rails'
 require 'exception_notification'
+require 'bootstrap-datepicker-rails'
 
 require 'rails_environment'
 require 'ucb_ldap'
