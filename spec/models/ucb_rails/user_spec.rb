@@ -3,6 +3,18 @@ require 'spec_helper'
 describe UcbRails::User do
   let(:klass) { UcbRails::User }
   
+  it "#roles defaults to []" do
+    klass.new.roles.should == []
+  end
+  
+  it "#has_role?" do
+    user = klass.new
+    user.should_not have_role('foo')
+    
+    user.stub :roles => ['foo']
+    user.should have_role('foo')
+  end
+  
   it 'first_last_name' do
     klass.create!(uid: 1).first_last_name.should be_nil
     klass.create!(uid: 2, first_name: 'Art').first_last_name.should == 'Art'

@@ -3,14 +3,6 @@
 * default user#has_role?
   * overridable module to include?
   
-* exception notification
-  * include gem
-  * include configuration (where)
-  * force error controller
-
-* email 
-  * configuration
-  * test send of email
 
 * login authorization
   * CalNet Authenticated

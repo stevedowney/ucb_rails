@@ -5,6 +5,15 @@ class UcbRails::User < ActiveRecord::Base
   
   before_validation :set_first_last_name
   
+  # Overridden by application
+  def roles
+    []
+  end
+  
+  def has_role?(role)
+    roles.include?(role)
+  end
+  
   def active?
     !inactive?
   end
