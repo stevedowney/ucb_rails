@@ -55,7 +55,7 @@ class UcbRails::SessionsController < ApplicationController
   
   def redirect_url(provider)
     if provider.to_s == 'cas'
-      "http://auth.berkeley.edu/cas/logout?url=#{root_url}"
+      "http://#{UcbRails[:cas_host]}/cas/logout?url=#{root_url}"
     else
       root_path
     end

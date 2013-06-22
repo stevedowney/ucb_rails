@@ -1,13 +1,19 @@
 # You can have configuration per-environment by nesting under the
 # environment key, or have a top level.
 
-
-    
 # ldap:
+#   host: 'nds.berkeley.edu'
+#   host: 'nds-test.berkeley.edu'
 #   username: <username>
 #   password: <password>
 
 development:
+
+  # Default behavior will do the right thing.  Only set if you want
+  # non-standard behavior.
+  # cas:
+  #   host: 'auth.berkeley.edu'
+  #   host: 'auth-test.berkeley.edu'
 
   # email:
   #   default:
@@ -40,7 +46,11 @@ development:
   #       - user1@example.com
   #       - user2@example.com
 
+  # Default behavior will select the correct host.  No need to set anything if
+  # you aren't specifying username/password.
   # ldap:
+  #   host: 'nds.berkeley.edu'
+  #   host: 'nds-test.berkeley.edu'
   #   username: <username>
   #   password: <password>
 

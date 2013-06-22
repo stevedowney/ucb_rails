@@ -20,24 +20,17 @@ UcbRails::Configuration::ExceptionNotification.configure(config.for('exception_n
 # UCB::LDAP
 ############################################################
 
-UCB::LDAP.host = 'nds.berkeley.edu'
-if ldap_credentials = config.for('ldap')
-  puts "[UcbRails] Using ldap credentials from #{config.config_filename}"
-  UCB::LDAP.authenticate(ldap_credentials['username'], ldap_credentials['password'])
-else
-  puts "[UcbRails] No ldap credentials found.  Using anonymous bind."
-end
-  
+UcbRails::Configuration::Ldap.configure(config.for('ldap'))
+
 ############################################################
 # OmniAuth
 ############################################################
 
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider(:developer, fields: [:uid], uid_field: :uid) unless RailsEnvironment.production?
-  
-  cas_host = RailsEnvironment.production? ? 'auth.berkeley.edu/cas' : 'auth-test.berkeley.edu/cas'
-  provider :cas, host: cas_host
-end
+UcbRails::Configuration::Cas.configure(config.for('cas'))
+
+############################################################
+# UcbRails
+############################################################
 
 UcbRails.config do |config|
   
