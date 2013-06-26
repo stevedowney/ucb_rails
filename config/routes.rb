@@ -19,7 +19,10 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :announcements
       get 'configuration' => 'configuration#index'
+      get 'email_test' => 'email_test#index'
+      post 'email_test' => 'email_test#send_email'
       get 'force_exception' => 'force_exception#index'
+
       resources :users do
         get 'ldap_search', on: :collection
         get 'typeahead_search', on: :collection

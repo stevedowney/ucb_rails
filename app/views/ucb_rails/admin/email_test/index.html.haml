@@ -1,0 +1,9 @@
+%h1 Send Test Email
+
+= form_tag(ucb_rails_admin_email_test_path) do
+  %p= text_field_tag :email, params[:email], placeholder: 'email@example.com'
+  %p= submit_button_tag "Send"
+  
+%hr
+
+%pre= @email_result

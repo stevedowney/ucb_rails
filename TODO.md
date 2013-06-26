@@ -1,9 +1,23 @@
 # TODO
 
-* default user#has_role?
-  * overridable module to include?
-  
+* controller for sending test email
+  * add to developer menu
 
+* browser checker
+
+* validators
+
+* ldap test data in yaml file
+
+* rspec matchers
+* rspec
+  * h method to escap html output for debugging
+  * fix up have_tag to auto deal with Capybara.string
+
+* timeouts
+  * inactivity timeout
+  * hard timeout
+  
 * login authorization
   * CalNet Authenticated
   * via UI, change login rules (i.e., admin only)

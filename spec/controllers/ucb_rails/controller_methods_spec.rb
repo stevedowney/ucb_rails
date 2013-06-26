@@ -15,6 +15,21 @@ describe UcbRails::ControllerMethods do
     end
   end
   
+  describe 'setting Thread.current[:current_user]' do
+    it "set in log request, cleared in remove_user_settings" do
+      user_mock = mock('user')
+      session_manager_mock = mock('session_manager')
+      controller.stub(user_session_manager: session_manager_mock)
+      controller.stub(current_user: user_mock)
+      session_manager_mock.should_receive(:log_request).with(user_mock)
+      
+      controller.log_request
+      UcbRails::UserSessionManager::Base.current_user.should == user_mock
+      controller.remove_user_settings
+      UcbRails::UserSessionManager::Base.current_user.should be_nil
+    end
+  end
+  
   describe '#current_ldap_person' do
     it "logged in" do
       # ldap_person = mock('ldap_person')

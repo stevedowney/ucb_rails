@@ -41,4 +41,14 @@ class UcbRails::UserSessionManager::Base
   def ldap_person_user_wrapper(ldap_person_entry)
     UcbRails::UserSessionManager::LdapPersonUserWrapper.new(ldap_person_entry)
   end
+  
+  class << self
+    def current_user=(user)
+      Thread.current[:current_user] = user
+    end
+    
+    def current_user
+      Thread.current[:current_user]
+    end
+  end
 end

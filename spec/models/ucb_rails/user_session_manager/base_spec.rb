@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe UcbRails::UserSessionManager::Base do
-  let(:manager) { UcbRails::UserSessionManager::Base.new }
+  let(:klass) { UcbRails::UserSessionManager::Base }
+  let(:manager) { klass.new }
   
   it "#login" do
     expect { manager.login("anything") }.to raise_error(NotImplementedError)
@@ -17,5 +18,16 @@ describe UcbRails::UserSessionManager::Base do
 
   it '#logout' do
     manager.logout('anything').should be_nil
+  end
+  
+  describe '.current_user, .current_user=' do
+    before(:each) do
+      
+    end
+    
+    it "set / get" do
+      klass.current_user = 'foo'
+      klass.current_user.should == 'foo'
+    end
   end
 end

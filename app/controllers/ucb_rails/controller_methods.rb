@@ -37,10 +37,12 @@ module UcbRails::ControllerMethods
   end
   
   def log_request
+    UcbRails::UserSessionManager::Base.current_user = current_user
     user_session_manager.log_request(current_user)
   end
   
   def remove_user_settings
+    UcbRails::UserSessionManager::Base.current_user = nil
   end
   
   # Returns an instance of UCB::LDAP::Person if there is a logged in user
