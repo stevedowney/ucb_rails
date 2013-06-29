@@ -1,8 +1,12 @@
 # TODO
 
-* controller for sending test email
-  * add to developer menu
-
+* port user switcher
+  * config which environments enabled
+  
+* UserLdapService:
+  * create_user(uid) - ok if exists
+  * create_user!(uid) - raises if found?
+  
 * browser checker
 
 * validators

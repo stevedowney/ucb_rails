@@ -11,6 +11,7 @@ module UcbRails
       def configure
         configure_host
         authenticate
+        test_entries
       end
       
       private
@@ -24,11 +25,19 @@ module UcbRails
           UCB::LDAP.authenticate config['username'], config['password']
         end
       end
-
+      
+      def test_entries
+        UCB::LDAP::Person.include_test_entries = config.fetch('include_test_entries', default_include_test_entries)
+      end
+      
       def default_host
         RailsEnvironment.production? ? 'nds.berkeley.edu' : 'nds-test.berkeley.edu'
       end
 
+      def default_include_test_entries
+        RailsEnvironment.not_production?
+      end
+      
       class << self
         def configure(config)
           new(config).configure

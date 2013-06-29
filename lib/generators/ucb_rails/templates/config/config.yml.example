@@ -6,6 +6,8 @@
 #   host: 'nds-test.berkeley.edu'
 #   username: <username>
 #   password: <password>
+#   include_test_entries: true
+#   include_test_entries: false
 
 development:
 
@@ -53,6 +55,10 @@ development:
   #   host: 'nds-test.berkeley.edu'
   #   username: <username>
   #   password: <password>
+  #   # by default test entries returned in all but PROD
+  #   include_test_entries: true
+  #   include_test_entries: false
+  
 
 test:
   email:
