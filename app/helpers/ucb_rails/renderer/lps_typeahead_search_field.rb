@@ -43,7 +43,7 @@ module UcbRails
           placeholder: placeholder,
           data: {
             uid_dom_id: uid_dom_id,
-            url: search_url
+            search_url: search_url
           }
         })
       end
