@@ -43,7 +43,6 @@ module UcbRails
           placeholder: placeholder,
           data: {
             uid_dom_id: uid_dom_id,
-            search_url: search_url
           }
         })
       end
@@ -52,6 +51,7 @@ module UcbRails
         span_options = {
           class: 'add-on ldap-person-search',
           data: {
+            search_url: search_url,
             search_field_name: name,
             result_link_text: result_link_text,
             result_link_class: result_link_class

@@ -12,7 +12,6 @@ describe UcbRails::LpsTypeaheadHelper do
           div_ia.find('input.typeahead-lps-search').tap do |input|
             input['autocomplete'].should == 'off'
             input['data-uid-dom-id'].should == 'uid'
-            input['data-search-url'].should == '/ucb_rails/admin/users/typeahead_search'
             input['id'].should == 'person_search'
             input['name'].should == 'person_search'
             input['placeholder'].should == 'Type name to search'
@@ -20,6 +19,7 @@ describe UcbRails::LpsTypeaheadHelper do
           end
         end
         div_c.find('span.add-on.ldap-person-search').tap do |span|
+          span['data-search-url'].should == '/ucb_rails/admin/users/typeahead_search'
           span['data-result-link-class'].should == 'lps-typeahead-item'
           span['data-result-link-text'].should == 'Select'
           span['data-search-field-name'].should == 'person_search'
@@ -119,7 +119,7 @@ describe UcbRails::LpsTypeaheadHelper do
     html = helper.lps_typeahead_search_field(search_url: '/surch')
     
     Capybara.string(html).find('div.control-group.lps-typeahead').tap do |div_cg|
-      div_cg.find('input[data-search-url="/surch"]')
+      div_cg.find('span[data-search-url="/surch"]')
     end
   end
   
