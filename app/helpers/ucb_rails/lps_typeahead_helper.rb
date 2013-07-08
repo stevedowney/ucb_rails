@@ -11,7 +11,9 @@ module UcbRails::LpsTypeaheadHelper
   # @option options [String] :result_link_text ('Select') the text of the link button in search results
   # @option options [String] :result_link_class ('lps-typeahead-item') class to be added the the results link
   # @option options [String] :uid_dom_id ('uid') the dom-id of the (hidden) uid <input>
-  # @option options [String] :search_url ('/ucb_rails/admin/users/typeahead_search') the search url for typeahead
+  # @option options [String] :typeahead_url ('/ucb_rails/admin/users/typeahead_search') the typeahead url
+  # @option options [String] :ldap_search_url ('/ucb_rails/ldap_person_search/) the ldap search rul
+  # @option options [Boolean] :ldap_search (true) include the icon/markup for ldap searches
   def lps_typeahead_search_field(options={})
     UcbRails::Renderer::LpsTypeaheadSearchField.new(self, options).html
   end

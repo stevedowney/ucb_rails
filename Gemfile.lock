@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ucb_rails (0.0.10)
+    ucb_rails (0.0.12)
       active_attr
       bootstrap-datepicker-rails
       bootstrap-sass (~> 2.3)

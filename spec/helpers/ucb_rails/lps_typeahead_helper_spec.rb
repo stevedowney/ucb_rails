@@ -12,6 +12,7 @@ describe UcbRails::LpsTypeaheadHelper do
           div_ia.find('input.typeahead-lps-search').tap do |input|
             input['autocomplete'].should == 'off'
             input['data-uid-dom-id'].should == 'uid'
+            input['data-url'].should == '/ucb_rails/admin/users/typeahead_search'
             input['id'].should == 'person_search'
             input['name'].should == 'person_search'
             input['placeholder'].should == 'Type name to search'
@@ -19,7 +20,7 @@ describe UcbRails::LpsTypeaheadHelper do
           end
         end
         div_c.find('span.add-on.ldap-person-search').tap do |span|
-          span['data-search-url'].should == '/ucb_rails/admin/users/typeahead_search'
+          span['data-url'].should == '/ucb_rails/admin/users/ldap_search'
           span['data-result-link-class'].should == 'lps-typeahead-item'
           span['data-result-link-text'].should == 'Select'
           span['data-search-field-name'].should == 'person_search'
@@ -115,12 +116,39 @@ describe UcbRails::LpsTypeaheadHelper do
     end
   end
 
-  it "search url" do
-    html = helper.lps_typeahead_search_field(search_url: '/surch')
+  it "typeahead url" do
+    html = helper.lps_typeahead_search_field(typeahead_url: '/ta_url')
+    Capybara.string(html).find('div.control-group.lps-typeahead').tap do |div_cg|
+      div_cg.find('input[data-url="/ta_url"]')
+    end
+  end
+
+  it "ldap search url" do
+    html = helper.lps_typeahead_search_field(ldap_search_url: '/ls_url')
+    Capybara.string(html).find('div.control-group.lps-typeahead').tap do |div_cg|
+      div_cg.find('span[data-url="/ls_url"]')
+    end
+  end
+  
+  it "no ldap search" do
+    html = helper.lps_typeahead_search_field(ldap_search: false)
     
     Capybara.string(html).find('div.control-group.lps-typeahead').tap do |div_cg|
-      div_cg.find('span[data-search-url="/surch"]')
+      div_cg.find('label.control-label[for="person_search"]', text: 'User')
+      div_cg.find('div.controls').tap do |div_c|
+        div_c.find('input.typeahead-lps-search').tap do |input|
+          input['autocomplete'].should == 'off'
+          input['data-uid-dom-id'].should == 'uid'
+          input['data-url'].should == '/ucb_rails/admin/users/typeahead_search'
+          input['id'].should == 'person_search'
+          input['name'].should == 'person_search'
+          input['placeholder'].should == 'Type name to search'
+          input['type'].should == 'text'
+        end
+        div_c.find('p.help-block', text: 'Click icon to search CalNet')
+      end
     end
+    
   end
   
   it "unknown option" do
