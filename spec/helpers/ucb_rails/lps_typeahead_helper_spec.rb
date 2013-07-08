@@ -145,7 +145,7 @@ describe UcbRails::LpsTypeaheadHelper do
           input['placeholder'].should == 'Type name to search'
           input['type'].should == 'text'
         end
-        div_c.find('p.help-block', text: 'Click icon to search CalNet')
+        div_c.should_not have_css('p.help-block')
       end
     end
     

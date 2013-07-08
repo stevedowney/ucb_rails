@@ -15,7 +15,7 @@ module UcbRails
           label_html +
           content_tag(:div, class: 'controls') do
             inputs +
-            content_tag(:p, hint, class: 'help-block')
+            hint_html
           end
         end
       end
@@ -41,6 +41,12 @@ module UcbRails
         end
       end
 
+      def hint_html
+        if ldap_search
+          content_tag(:p, hint, class: 'help-block')
+        end
+      end
+      
       def input_append_div
         content_tag(:div, class: 'input-append') do
           text_field_html + span_html
